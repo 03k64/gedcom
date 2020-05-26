@@ -10,6 +10,7 @@ use self::{
 use lazy_static::lazy_static;
 use regex::Regex;
 use serde_json;
+use std::error::Error;
 
 pub const DATE_CREATED_FORMAT: &'static str = "%Y-%m-%dT%H:%M:%S";
 
@@ -17,8 +18,9 @@ lazy_static! {
     static ref XREF_ID_DIGITS: Regex = Regex::new(r#"@.+([0-9]+)@"#).unwrap();
 }
 
-pub fn gedcom_to_relation_json(input: &str) -> Result<String, &str> {
-    let (_, gedcom_lines) = parse_gedcom(input).map_err(|_| "Could not parse GEDCOM input")?;
+pub fn gedcom_to_relation_json(input: &str) -> Result<String, Box<dyn Error>> {
+    let (_, gedcom_lines) =
+        parse_gedcom(input).map_err(|e| format!("Could not parse GEDCOM input: {}", e))?;
     let tree_roots = GedcomTree::from(gedcom_lines);
     let api_response = ApiResponse::from(tree_roots);
     let json = serde_json::json!(api_response).to_string();
