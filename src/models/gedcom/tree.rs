@@ -19,8 +19,7 @@ impl From<Vec<GedcomLine>> for GedcomTree {
                 let node_children = children.drain(..).collect();
                 let node = GedcomTreeNodeBuilder::from(line)
                     .with_children(node_children)
-                    .build()
-                    .unwrap();
+                    .build();
 
                 nodes.push(node);
             } else if current_level < previous_level {
@@ -29,12 +28,11 @@ impl From<Vec<GedcomLine>> for GedcomTree {
                     .collect();
                 let node = GedcomTreeNodeBuilder::from(line)
                     .with_children(node_children)
-                    .build()
-                    .unwrap();
+                    .build();
 
                 children.push(node);
             } else {
-                let node = GedcomTreeNodeBuilder::from(line).build().unwrap();
+                let node = GedcomTreeNodeBuilder::from(line).build();
                 children.push(node);
             }
 
@@ -106,15 +104,14 @@ impl From<GedcomLine> for GedcomTreeNodeBuilder {
 }
 
 impl GedcomTreeNodeBuilder {
-    pub fn build(&mut self) -> Result<GedcomTreeNode, &'static str> {
-        let node = GedcomTreeNode {
+    pub fn build(&mut self) -> GedcomTreeNode {
+        GedcomTreeNode {
             children: self.children.drain(..).rev().collect(),
             level: self.level,
             line_value: self.line_value.to_owned(),
             tag: self.tag.to_owned(),
             xref_id: self.xref_id.to_owned(),
-        };
-        Ok(node)
+        }
     }
 
     pub fn with_children(&mut self, children: Vec<GedcomTreeNode>) -> &mut Self {
@@ -138,9 +135,6 @@ mod tests {
             .unwrap();
 
         let actual = GedcomTreeNodeBuilder::from(input).build();
-        assert!(actual.is_ok());
-
-        let actual = actual.unwrap();
         let expected = GedcomTreeNode {
             children: vec![],
             level: 0,
@@ -174,9 +168,6 @@ mod tests {
             .with_children(vec![child])
             .build();
 
-        assert!(actual.is_ok());
-
-        let actual = actual.unwrap();
         let expected = GedcomTreeNode {
             children: vec![expected_child],
             level: 0,
@@ -203,10 +194,25 @@ mod tests {
             .build()
             .unwrap();
 
-        let input = vec![indi_line, name_line];
+        let given_name_line = GedcomLine::builder()
+            .with_level(2)
+            .with_optional_line_value(Some(String::from("Given Name")))
+            .with_tag(GedcomLineTag::GivenName)
+            .build()
+            .unwrap();
+
+        let input = vec![indi_line, name_line, given_name_line];
+
+        let given_name_node = GedcomTreeNode {
+            children: vec![],
+            level: 2,
+            line_value: Some(String::from("Given Name")),
+            tag: GedcomLineTag::GivenName,
+            xref_id: None,
+        };
 
         let name_node = GedcomTreeNode {
-            children: vec![],
+            children: vec![given_name_node],
             level: 1,
             line_value: Some(String::from("Name")),
             tag: GedcomLineTag::Name,

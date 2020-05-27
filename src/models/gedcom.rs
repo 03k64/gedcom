@@ -44,7 +44,7 @@ mod tests {
             .with_tag(GedcomLineTag::Time)
             .build()
             .unwrap();
-        let time = GedcomTreeNodeBuilder::from(time).build().unwrap();
+        let time = GedcomTreeNodeBuilder::from(time).build();
 
         let date = GedcomLine::builder()
             .with_level(1)
@@ -54,8 +54,7 @@ mod tests {
             .unwrap();
         let date = GedcomTreeNodeBuilder::from(date)
             .with_children(vec![time])
-            .build()
-            .unwrap();
+            .build();
 
         let change = GedcomLine::builder()
             .with_level(0)
@@ -64,8 +63,7 @@ mod tests {
             .unwrap();
         let change = GedcomTreeNodeBuilder::from(change)
             .with_children(vec![date])
-            .build()
-            .unwrap();
+            .build();
 
         let actual = change_node_to_date_time(&change);
         assert!(actual.is_ok());
@@ -87,7 +85,7 @@ mod tests {
             .with_tag(GedcomLineTag::Time)
             .build()
             .unwrap();
-        let time = GedcomTreeNodeBuilder::from(time).build().unwrap();
+        let time = GedcomTreeNodeBuilder::from(time).build();
 
         let date = GedcomLine::builder()
             .with_level(1)
@@ -97,8 +95,7 @@ mod tests {
             .unwrap();
         let date = GedcomTreeNodeBuilder::from(date)
             .with_children(vec![time])
-            .build()
-            .unwrap();
+            .build();
 
         let change = GedcomLine::builder()
             .with_level(0)
@@ -107,8 +104,7 @@ mod tests {
             .unwrap();
         let change = GedcomTreeNodeBuilder::from(change)
             .with_children(vec![date])
-            .build()
-            .unwrap();
+            .build();
 
         let actual = change_node_to_date_time(&change);
         assert!(actual.is_err());
@@ -126,7 +122,7 @@ mod tests {
             .with_tag(GedcomLineTag::Time)
             .build()
             .unwrap();
-        let time = GedcomTreeNodeBuilder::from(time).build().unwrap();
+        let time = GedcomTreeNodeBuilder::from(time).build();
 
         let date = GedcomLine::builder()
             .with_level(1)
@@ -136,8 +132,7 @@ mod tests {
             .unwrap();
         let date = GedcomTreeNodeBuilder::from(date)
             .with_children(vec![time])
-            .build()
-            .unwrap();
+            .build();
 
         let change = GedcomLine::builder()
             .with_level(0)
@@ -146,8 +141,7 @@ mod tests {
             .unwrap();
         let change = GedcomTreeNodeBuilder::from(change)
             .with_children(vec![date])
-            .build()
-            .unwrap();
+            .build();
 
         let actual = change_node_to_date_time(&change);
         assert!(actual.is_err());
@@ -165,7 +159,7 @@ mod tests {
             .with_tag(GedcomLineTag::Time)
             .build()
             .unwrap();
-        let time = GedcomTreeNodeBuilder::from(time).build().unwrap();
+        let time = GedcomTreeNodeBuilder::from(time).build();
 
         let date = GedcomLine::builder()
             .with_level(1)
@@ -175,8 +169,7 @@ mod tests {
             .unwrap();
         let date = GedcomTreeNodeBuilder::from(date)
             .with_children(vec![time])
-            .build()
-            .unwrap();
+            .build();
 
         let change = GedcomLine::builder()
             .with_level(0)
@@ -185,8 +178,7 @@ mod tests {
             .unwrap();
         let change = GedcomTreeNodeBuilder::from(change)
             .with_children(vec![date])
-            .build()
-            .unwrap();
+            .build();
 
         let actual = change_node_to_date_time(&change);
         assert!(actual.is_err());
@@ -203,7 +195,7 @@ mod tests {
             .with_tag(GedcomLineTag::Time)
             .build()
             .unwrap();
-        let time = GedcomTreeNodeBuilder::from(time).build().unwrap();
+        let time = GedcomTreeNodeBuilder::from(time).build();
 
         let date = GedcomLine::builder()
             .with_level(1)
@@ -213,8 +205,7 @@ mod tests {
             .unwrap();
         let date = GedcomTreeNodeBuilder::from(date)
             .with_children(vec![time])
-            .build()
-            .unwrap();
+            .build();
 
         let change = GedcomLine::builder()
             .with_level(0)
@@ -223,8 +214,7 @@ mod tests {
             .unwrap();
         let change = GedcomTreeNodeBuilder::from(change)
             .with_children(vec![date])
-            .build()
-            .unwrap();
+            .build();
 
         let actual = change_node_to_date_time(&change);
         assert!(actual.is_err());
@@ -242,7 +232,7 @@ mod tests {
             .with_tag(GedcomLineTag::Date)
             .build()
             .unwrap();
-        let date = GedcomTreeNodeBuilder::from(date).build().unwrap();
+        let date = GedcomTreeNodeBuilder::from(date).build();
 
         let change = GedcomLine::builder()
             .with_level(0)
@@ -251,8 +241,7 @@ mod tests {
             .unwrap();
         let change = GedcomTreeNodeBuilder::from(change)
             .with_children(vec![date])
-            .build()
-            .unwrap();
+            .build();
 
         let actual = change_node_to_date_time(&change);
         assert!(actual.is_err());
@@ -269,7 +258,7 @@ mod tests {
             .with_tag(GedcomLineTag::Date)
             .build()
             .unwrap();
-        let date = GedcomTreeNodeBuilder::from(date).build().unwrap();
+        let date = GedcomTreeNodeBuilder::from(date).build();
 
         let change = GedcomLine::builder()
             .with_level(0)
@@ -278,8 +267,7 @@ mod tests {
             .unwrap();
         let change = GedcomTreeNodeBuilder::from(change)
             .with_children(vec![date])
-            .build()
-            .unwrap();
+            .build();
 
         let actual = change_node_to_date_time(&change);
         assert!(actual.is_err());
@@ -296,7 +284,7 @@ mod tests {
             .with_tag(GedcomLineTag::Change)
             .build()
             .unwrap();
-        let change = GedcomTreeNodeBuilder::from(change).build().unwrap();
+        let change = GedcomTreeNodeBuilder::from(change).build();
 
         let actual = change_node_to_date_time(&change);
         assert!(actual.is_err());
