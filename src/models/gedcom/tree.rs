@@ -1,6 +1,6 @@
 use crate::models::gedcom::{GedcomLine, GedcomLineTag};
 
-#[derive(Default)]
+#[cfg_attr(test, derive(Debug, Eq, PartialEq))]
 pub struct GedcomTree {
     nodes: Vec<GedcomTreeNode>,
 }
@@ -48,21 +48,13 @@ impl From<Vec<GedcomLine>> for GedcomTree {
 }
 
 impl GedcomTree {
-    pub fn new() -> Self {
-        Default::default()
-    }
-
-    pub fn add_node(&mut self, node: GedcomTreeNode) {
-        self.nodes.push(node);
-    }
-
     pub fn nodes(&self) -> &Vec<GedcomTreeNode> {
         &self.nodes
     }
 }
 
 #[derive(Clone)]
-#[cfg_attr(test, derive(Debug))]
+#[cfg_attr(test, derive(Debug, Eq, PartialEq))]
 pub struct GedcomTreeNode {
     children: Vec<Self>,
     level: u8,
@@ -125,13 +117,115 @@ impl GedcomTreeNodeBuilder {
         Ok(node)
     }
 
-    pub fn with_child(&mut self, child: GedcomTreeNode) -> &mut Self {
-        self.children.push(child);
-        self
-    }
-
     pub fn with_children(&mut self, children: Vec<GedcomTreeNode>) -> &mut Self {
         self.children = children;
         self
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use crate::models::gedcom::{
+        GedcomLine, GedcomLineTag, GedcomTree, GedcomTreeNode, GedcomTreeNodeBuilder,
+    };
+
+    #[test]
+    fn gedcom_tree_node_builder_works_correctly_with_no_children() {
+        let input = GedcomLine::builder()
+            .with_level(0)
+            .with_tag(GedcomLineTag::Individual)
+            .build()
+            .unwrap();
+
+        let actual = GedcomTreeNodeBuilder::from(input).build();
+        assert!(actual.is_ok());
+
+        let actual = actual.unwrap();
+        let expected = GedcomTreeNode {
+            children: vec![],
+            level: 0,
+            line_value: None,
+            tag: GedcomLineTag::Individual,
+            xref_id: None,
+        };
+
+        assert_eq!(actual, expected);
+    }
+
+    #[test]
+    fn gedcom_tree_node_builder_works_correctly_with_children() {
+        let line = GedcomLine::builder()
+            .with_level(0)
+            .with_tag(GedcomLineTag::Individual)
+            .build()
+            .unwrap();
+
+        let child = GedcomTreeNode {
+            children: vec![],
+            level: 1,
+            line_value: Some(String::from("Name")),
+            tag: GedcomLineTag::Name,
+            xref_id: None,
+        };
+
+        let expected_child = child.clone();
+
+        let actual = GedcomTreeNodeBuilder::from(line)
+            .with_children(vec![child])
+            .build();
+
+        assert!(actual.is_ok());
+
+        let actual = actual.unwrap();
+        let expected = GedcomTreeNode {
+            children: vec![expected_child],
+            level: 0,
+            line_value: None,
+            tag: GedcomLineTag::Individual,
+            xref_id: None,
+        };
+
+        assert_eq!(actual, expected);
+    }
+
+    #[test]
+    fn gedcom_tree_from_works_with_simple_example() {
+        let indi_line = GedcomLine::builder()
+            .with_level(0)
+            .with_tag(GedcomLineTag::Individual)
+            .build()
+            .unwrap();
+
+        let name_line = GedcomLine::builder()
+            .with_level(1)
+            .with_optional_line_value(Some(String::from("Name")))
+            .with_tag(GedcomLineTag::Name)
+            .build()
+            .unwrap();
+
+        let input = vec![indi_line, name_line];
+
+        let name_node = GedcomTreeNode {
+            children: vec![],
+            level: 1,
+            line_value: Some(String::from("Name")),
+            tag: GedcomLineTag::Name,
+            xref_id: None,
+        };
+
+        let indi_node = GedcomTreeNode {
+            children: vec![name_node],
+            level: 0,
+            line_value: None,
+            tag: GedcomLineTag::Individual,
+            xref_id: None,
+        };
+
+        let actual = GedcomTree::from(input);
+        let expected = GedcomTree {
+            nodes: vec![indi_node],
+        };
+
+        assert_eq!(actual, expected);
     }
 }
