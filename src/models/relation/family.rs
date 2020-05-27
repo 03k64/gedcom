@@ -1,7 +1,8 @@
 use chrono::NaiveDateTime;
 use serde::{Deserialize, Serialize};
 
-#[derive(Clone, Debug, Deserialize, Eq, PartialEq, Serialize)]
+#[derive(Clone, Deserialize, Serialize)]
+#[cfg_attr(test, derive(Debug, Eq, PartialEq))]
 #[serde(rename_all = "PascalCase")]
 pub struct Child {
     child_id: u32,
@@ -34,7 +35,8 @@ impl Child {
     }
 }
 
-#[derive(Clone, Debug, Deserialize, Eq, PartialEq, Serialize)]
+#[derive(Clone, Deserialize, Serialize)]
+#[cfg_attr(test, derive(Debug, Eq, PartialEq))]
 #[serde(rename_all = "PascalCase")]
 pub struct Family {
     date_created: NaiveDateTime,

@@ -10,7 +10,8 @@ use serde::{Deserialize, Serialize};
 use serde_repr::{Deserialize_repr, Serialize_repr};
 use std::convert::TryFrom;
 
-#[derive(Clone, Debug, Deserialize, Eq, PartialEq, Serialize)]
+#[derive(Deserialize, Serialize)]
+#[cfg_attr(test, derive(Debug, Eq, PartialEq))]
 #[serde(rename_all = "PascalCase")]
 pub struct Person {
     date_created: NaiveDateTime,
@@ -70,7 +71,7 @@ impl Person {
     }
 }
 
-#[derive(Clone, Debug, Default)]
+#[derive(Default)]
 pub struct PersonBuilder {
     date_created: Option<NaiveDateTime>,
     facts: Option<Vec<Birth>>,

@@ -12,7 +12,8 @@ use std::convert::TryFrom;
 const FAMILY_ID_SEED: u32 = 100;
 const CHILD_ID_SEED: u32 = 1000;
 
-#[derive(Clone, Debug, Default, Deserialize, Eq, PartialEq, Serialize)]
+#[derive(Default, Deserialize, Serialize)]
+#[cfg_attr(test, derive(Debug))]
 #[serde(rename_all = "PascalCase")]
 pub struct ApiResponse {
     childs: Vec<Child>,

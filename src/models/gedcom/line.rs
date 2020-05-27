@@ -6,7 +6,7 @@ lazy_static! {
     static ref VALID_CUSTOM_TAG: Regex = Regex::new(r#"^(_[A-Za-z0-9_]+)$"#).unwrap();
 }
 
-#[derive(Clone, Debug, Eq, PartialEq)]
+#[cfg_attr(test, derive(Debug, Eq, PartialEq))]
 pub struct GedcomLine {
     level: u8,
     line_value: Option<String>,
@@ -36,7 +36,7 @@ impl GedcomLine {
     }
 }
 
-#[derive(Clone, Default)]
+#[derive(Default)]
 pub struct GedcomLineBuilder {
     level: Option<u8>,
     optional_line_value: Option<String>,
@@ -84,7 +84,8 @@ impl GedcomLineBuilder {
     }
 }
 
-#[derive(Clone, Debug, Eq, PartialEq)]
+#[derive(Clone, Eq, PartialEq)]
+#[cfg_attr(test, derive(Debug))]
 pub enum GedcomLineTag {
     Abbreviation,
     Address,

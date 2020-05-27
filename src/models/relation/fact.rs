@@ -5,14 +5,16 @@ use serde_repr::{Deserialize_repr, Serialize_repr};
 
 const DATE_DETAIL_FORMAT: &'static str = "%-d %b %Y";
 
-#[derive(Clone, Copy, Debug, Deserialize_repr, Eq, PartialEq, Serialize_repr)]
+#[derive(Clone, Copy, Deserialize_repr, Serialize_repr)]
+#[cfg_attr(test, derive(Debug, Eq, PartialEq))]
 #[repr(u16)]
 pub enum FactTypeId {
     Birth = 405,
     Name = 100,
 }
 
-#[derive(Clone, Debug, Deserialize, Eq, PartialEq, Serialize)]
+#[derive(Deserialize, Serialize)]
+#[cfg_attr(test, derive(Debug, Eq, PartialEq))]
 #[serde(rename_all = "PascalCase")]
 pub struct Birth {
     #[serde(
@@ -103,7 +105,7 @@ impl Birth {
     }
 }
 
-#[derive(Clone, Debug, Default)]
+#[derive(Default)]
 pub struct BirthBuilder {
     date_detail: Option<NaiveDate>,
     place: Option<Place>,
@@ -145,7 +147,8 @@ impl BirthBuilder {
     }
 }
 
-#[derive(Clone, Debug, Deserialize, Eq, PartialEq, Serialize)]
+#[derive(Deserialize, Serialize)]
+#[cfg_attr(test, derive(Debug, Eq, PartialEq))]
 #[serde(rename_all = "PascalCase")]
 pub struct Name {
     fact_type_id: FactTypeId,
@@ -213,7 +216,8 @@ impl NameBuilder {
     }
 }
 
-#[derive(Clone, Debug, Deserialize, Eq, PartialEq, Serialize)]
+#[derive(Deserialize, Serialize)]
+#[cfg_attr(test, derive(Debug, Eq, PartialEq))]
 #[serde(rename_all = "PascalCase")]
 pub struct Place {
     place_name: String,

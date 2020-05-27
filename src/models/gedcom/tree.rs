@@ -61,7 +61,8 @@ impl GedcomTree {
     }
 }
 
-#[derive(Clone, Debug)]
+#[derive(Clone)]
+#[cfg_attr(test, derive(Debug))]
 pub struct GedcomTreeNode {
     children: Vec<Self>,
     level: u8,
