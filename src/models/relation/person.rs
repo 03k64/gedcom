@@ -3,7 +3,7 @@ use crate::{
         gedcom::{change_node_to_date_time, GedcomLineTag, GedcomTreeNode},
         relation::{Birth, Name},
     },
-    xref_id_to_numeric_id, DATE_CREATED_FORMAT,
+    DATE_CREATED_FORMAT,
 };
 use chrono::NaiveDateTime;
 use serde::{Deserialize, Serialize};
@@ -24,16 +24,31 @@ pub struct Person {
     names: Vec<Name>,
 }
 
-impl TryFrom<&GedcomTreeNode> for Person {
+impl Person {
+    pub fn builder() -> PersonBuilder {
+        PersonBuilder::new()
+    }
+
+    pub fn id(&self) -> u32 {
+        self.id
+    }
+}
+
+#[derive(Default)]
+pub struct PersonBuilder {
+    date_created: Option<NaiveDateTime>,
+    facts: Option<Vec<Birth>>,
+    gender: Option<Gender>,
+    id: Option<u32>,
+    is_living: Option<bool>,
+    names: Option<Vec<Name>>,
+}
+
+impl TryFrom<&GedcomTreeNode> for PersonBuilder {
     type Error = &'static str;
 
     fn try_from(node: &GedcomTreeNode) -> Result<Self, Self::Error> {
-        let mut builder = Person::builder();
-
-        if let Some(xref_id) = node.xref_id() {
-            let id = xref_id_to_numeric_id(xref_id.as_str()).unwrap_or_default();
-            builder.with_id(id);
-        }
+        let mut builder = Self::new();
 
         for child in node.children().into_iter() {
             match child.tag() {
@@ -57,28 +72,9 @@ impl TryFrom<&GedcomTreeNode> for Person {
                 _ => {}
             }
         }
-        builder.build()
-    }
-}
 
-impl Person {
-    pub fn builder() -> PersonBuilder {
-        PersonBuilder::new()
+        Ok(builder)
     }
-
-    pub fn id(&self) -> u32 {
-        self.id
-    }
-}
-
-#[derive(Default)]
-pub struct PersonBuilder {
-    date_created: Option<NaiveDateTime>,
-    facts: Option<Vec<Birth>>,
-    gender: Option<Gender>,
-    id: Option<u32>,
-    is_living: Option<bool>,
-    names: Option<Vec<Name>>,
 }
 
 impl PersonBuilder {
