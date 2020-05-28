@@ -61,29 +61,69 @@ release builds before running benchmarks as outlined above.
 The [Criterion library](https://bheisler.github.io/criterion.rs/book/index.html)
 was used in development to ensure performance regressions did not occur. To this
 end a small benchmark can be found in `benches/small_benchmark.rs`. Criterion
-acts as a test harness, but also produces output in the following format that
+acts as a test harness, but also produces output in the below format that
 allows regressions to be tracked between changes with a degree of statistical
-significance:
+significance.
+
+### Example Output
+
+An initial benchmark run may produce output similar to the folllowing:
 
 ```shell
 gedcom_to_relation_json ONE_NODE
-                        time:   [295.56 us 301.15 us 307.26 us]
-Found 5 outliers among 100 measurements (5.00%)
-  4 (4.00%) high mild
-  1 (1.00%) high severe
+                        time:   [289.65 us 300.53 us 312.37 us]
+Found 15 outliers among 100 measurements (15.00%)
+  3 (3.00%) high mild
+  12 (12.00%) high severe
 
 gedcom_to_relation_json THREE_NODE
-                        time:   [510.15 us 517.52 us 525.58 us]
+                        time:   [480.55 us 496.24 us 514.78 us]
 Found 14 outliers among 100 measurements (14.00%)
-  8 (8.00%) high mild
-  6 (6.00%) high severe
+  3 (3.00%) high mild
+  11 (11.00%) high severe
 
 gedcom_to_relation_json SIBLING
-                        time:   [608.85 us 643.60 us 687.81 us]
-Found 12 outliers among 100 measurements (12.00%)
-  3 (3.00%) high mild
-  9 (9.00%) high severe
+                        time:   [578.72 us 597.32 us 619.63 us]
+Found 1 outliers among 100 measurements (1.00%)
+  1 (1.00%) high mild
 ```
+
+A subsequent benchmark run (in this case following the marking of a function as
+inline-able to the compiler) may produce output similar to the following:
+
+```shell
+gedcom_to_relation_json ONE_NODE
+                        time:   [256.40 us 257.08 us 257.85 us]
+                        change: [-38.275% -29.482% -19.934%] (p = 0.00 < 0.05)
+                        Performance has improved.
+Found 10 outliers among 100 measurements (10.00%)
+  5 (5.00%) high mild
+  5 (5.00%) high severe
+
+gedcom_to_relation_json THREE_NODE
+                        time:   [458.71 us 459.72 us 461.01 us]
+                        change: [-7.8661% -5.0149% -2.1319%] (p = 0.00 < 0.05)
+                        Performance has improved.
+Found 7 outliers among 100 measurements (7.00%)
+  7 (7.00%) high severe
+
+gedcom_to_relation_json SIBLING
+                        time:   [595.04 us 665.34 us 747.79 us]
+                        change: [-10.509% -4.6092% +2.5256%] (p = 0.16 > 0.05)
+                        No change in performance detected.
+Found 21 outliers among 100 measurements (21.00%)
+  4 (4.00%) high mild
+  17 (17.00%) high severe
+```
+
+In addition to the command-line output provided as an overview, a HTML report is
+generated automatically by Criterion and can be view by going to
+`file:///</path/to/project/root>/target/criterion/report/index.html` in your
+browser of choice.
+
+The examples above were run on an Early 2015 Macbook Pro with an 2.9GHz Intel i5
+CPU, 8GB 1867MHz DDR3 RAM and macOS v10.15.4. Your results may vary dependent on
+machine specification.
 
 ## Project Structure
 
