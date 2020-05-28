@@ -19,6 +19,12 @@ serde_repr = "0.1"
 [dev-dependencies]
 criterion = "0.3"
 
+[profile.bench]
+lto = "fat"
+
+[profile.release]
+lto = "fat"
+
 [[bench]]
 name = "small_benchmark"
 harness = false
