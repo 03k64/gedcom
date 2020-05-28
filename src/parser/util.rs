@@ -25,10 +25,12 @@ pub fn five_tuple_to_gedcom_line(
     (input, line)
 }
 
+#[inline]
 pub fn char_to_string((input, output): (&str, char)) -> (&str, String) {
     (input, output.to_string())
 }
 
+#[inline]
 pub fn four_tuple_to_string(
     (input, (a, b, c, d)): (&str, (String, String, String, String)),
 ) -> (&str, String) {
