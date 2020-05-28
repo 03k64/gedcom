@@ -102,11 +102,11 @@ section.
 
 |Crate|Description|Official Site / Documentation URL|
 |---|---|---|
-|`chrono`|A Date & Time library|https://docs.rs/chrono/0.4.11/chrono/|
-|`clap`|Command-Line Argument Parser|https://clap.rs/|
-|`lazy_static`|A macro for declaring lazily evaluated statics|https://docs.rs/lazy_static/1.4.0/lazy_static/|
-|`nom`|Nom is a Parser-combinator library|https://docs.rs/nom/6.0.0-alpha1/nom/index.html|
-|`regex`|Regular expressions library|https://docs.rs/regex/1.3.7/regex/|
-|`serde`|Serialization and deserialization framework|https://serde.rs/|
-|`serde_json`|JSON serialization and deserialization using `serde`|https://docs.serde.rs/serde_json/|
-|`serde_repr`|Serialization and deserialization of enumerated types using user-specified representation|https://docs.rs/serde_repr/0.1.5/serde_repr/|
+|`chrono`|A Date & Time library|[Documentation](https://docs.rs/chrono/0.4.11/chrono/)|
+|`clap`|Command-Line Argument Parser|[Official Site](https://clap.rs/)|
+|`lazy_static`|A macro for declaring lazily evaluated statics|[Documentation](https://docs.rs/lazy_static/1.4.0/lazy_static/)|
+|`nom`|Nom is a Parser-combinator library|[Documentation](https://docs.rs/nom/6.0.0-alpha1/nom/index.html)|
+|`regex`|Regular expressions library|[Documentation](https://docs.rs/regex/1.3.7/regex/)|
+|`serde`|Serialization and deserialization framework|[Official Site](https://serde.rs/)|
+|`serde_json`|JSON serialization and deserialization using `serde`|[Documentation](https://docs.serde.rs/serde_json/)|
+|`serde_repr`|Serialization and deserialization of enumerated types using user-specified representation|[Documentation](https://docs.rs/serde_repr/0.1.5/serde_repr/)|
