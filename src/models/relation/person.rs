@@ -185,13 +185,13 @@ mod tests {
         let expected = Person::builder()
             .is_living()
             .with_date_created_from_str("2020-04-15T16:44:00")
-            .with_gender(Gender::Male)
+            .with_gender(Gender::Other)
             .with_id(1)
             .with_name(name)
             .build()
             .unwrap();
 
-        let input = r#"{ "Id": 1, "Gender": 1, "IsLiving": true, "DateCreated": "2020-04-15T16:44:00", "Names": [ { "FactTypeId": 100, "GivenNames": "Gavin", "Surnames": "Henderson" } ] }"#;
+        let input = r#"{ "Id": 1, "Gender": 3, "IsLiving": true, "DateCreated": "2020-04-15T16:44:00", "Names": [ { "FactTypeId": 100, "GivenNames": "Gavin", "Surnames": "Henderson" } ] }"#;
         let actual: Person = serde_json::from_str(input).unwrap();
 
         assert_eq!(actual, expected);
@@ -206,14 +206,14 @@ mod tests {
 
         let input = Person::builder()
             .with_date_created_from_str("2020-04-15T16:44:00")
-            .with_gender(Gender::Male)
+            .with_gender(Gender::Other)
             .with_id(1)
             .with_name(name)
             .build()
             .unwrap();
 
         let actual = serde_json::json!(input).to_string();
-        let expected = r#"{"DateCreated":"2020-04-15T16:44:00","Gender":1,"Id":1,"IsLiving":true,"Names":[{"FactTypeId":100,"GivenNames":"Gavin","Surnames":"Henderson"}]}"#;
+        let expected = r#"{"DateCreated":"2020-04-15T16:44:00","Gender":3,"Id":1,"IsLiving":true,"Names":[{"FactTypeId":100,"GivenNames":"Gavin","Surnames":"Henderson"}]}"#;
 
         assert_eq!(actual, expected);
     }
