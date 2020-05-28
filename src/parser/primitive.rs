@@ -1,6 +1,11 @@
 use super::util::{char_to_string, tuple_to_string};
 use lazy_static::lazy_static;
-use nom::{branch::alt, character::complete::one_of, sequence::pair, IResult};
+use nom::{
+    branch::alt,
+    character::complete::{char, one_of},
+    sequence::pair,
+    IResult,
+};
 
 lazy_static! {
     static ref ALPHA: Vec<u8> = vec![
@@ -9,12 +14,7 @@ lazy_static! {
         0x65, 0x66, 0x67, 0x68, 0x69, 0x6A, 0x6B, 0x6C, 0x6D, 0x6E, 0x6F, 0x70, 0x71, 0x72, 0x73,
         0x74, 0x75, 0x76, 0x77, 0x78, 0x79, 0x7A, 0x5F
     ];
-    static ref AT: Vec<u8> = vec![0x40];
-    static ref CR: Vec<u8> = vec![0x0D];
-    static ref DELIM: Vec<u8> = vec![0x20];
     static ref DIGIT: Vec<u8> = vec![0x30, 0x31, 0x32, 0x33, 0x34, 0x35, 0x36, 0x37, 0x38, 0x39];
-    static ref HASH: Vec<u8> = vec![0x23];
-    static ref LF: Vec<u8> = vec![0x0A];
     static ref NON_ZERO_DIGIT: Vec<u8> = vec![0x31, 0x32, 0x33, 0x34, 0x35, 0x36, 0x37, 0x38, 0x39];
     static ref OTHERCHAR: Vec<u8> = vec![
         0x21, 0x22, 0x24, 0x25, 0x26, 0x27, 0x28, 0x29, 0x2A, 0x2B, 0x2C, 0x2D, 0x2E, 0x2F, 0x3A,
@@ -30,6 +30,12 @@ lazy_static! {
         0xF9, 0xFA, 0xFB, 0xFC, 0xFD, 0xFE,
     ];
 }
+
+const AT: char = '@';
+const CR: char = '\r';
+const DELIM: char = ' ';
+const HASH: char = '#';
+const LF: char = '\n';
 
 pub fn parse_alpha(input: &str) -> IResult<&str, String> {
     one_of(&ALPHA[..])(input).map(char_to_string)
@@ -51,15 +57,15 @@ pub fn parse_anychar(input: &str) -> IResult<&str, String> {
 }
 
 pub fn parse_at(input: &str) -> IResult<&str, String> {
-    one_of(&AT[..])(input).map(char_to_string)
+    char(AT)(input).map(char_to_string)
 }
 
 pub fn parse_carriage_return(input: &str) -> IResult<&str, String> {
-    one_of(&CR[..])(input).map(char_to_string)
+    char(CR)(input).map(char_to_string)
 }
 
 pub fn parse_delim(input: &str) -> IResult<&str, String> {
-    one_of(&DELIM[..])(input).map(char_to_string)
+    char(DELIM)(input).map(char_to_string)
 }
 
 pub fn parse_digit(input: &str) -> IResult<&str, String> {
@@ -71,11 +77,11 @@ fn parse_double_at(input: &str) -> IResult<&str, String> {
 }
 
 pub fn parse_hash(input: &str) -> IResult<&str, String> {
-    one_of(&HASH[..])(input).map(char_to_string)
+    char(HASH)(input).map(char_to_string)
 }
 
 pub fn parse_line_feed(input: &str) -> IResult<&str, String> {
-    one_of(&LF[..])(input).map(char_to_string)
+    char(LF)(input).map(char_to_string)
 }
 
 pub fn parse_nonat(input: &str) -> IResult<&str, String> {
