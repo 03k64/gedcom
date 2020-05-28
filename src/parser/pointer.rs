@@ -49,7 +49,7 @@ mod tests {
     #[test]
     fn test_parse_pointer_no_leading_at() {
         let input = "APS1@";
-        let expected = Err(Err::Error(("APS1@", ErrorKind::OneOf)));
+        let expected = Err(Err::Error(("APS1@", ErrorKind::Char)));
         let actual = parse_pointer(input);
         assert_eq!(actual, expected);
     }
@@ -57,7 +57,7 @@ mod tests {
     #[test]
     fn test_parse_pointer_no_trailing_at() {
         let input = "@APS1";
-        let expected = Err(Err::Error(("", ErrorKind::OneOf)));
+        let expected = Err(Err::Error(("", ErrorKind::Char)));
         let actual = parse_pointer(input);
         assert_eq!(actual, expected);
     }

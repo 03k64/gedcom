@@ -57,7 +57,7 @@ mod tests {
     #[test]
     fn test_parse_escape_invalid_no_leading_at() {
         let input = "#ESCAPE@1";
-        let expected = Err(Err::Error(("#ESCAPE@1", ErrorKind::OneOf)));
+        let expected = Err(Err::Error(("#ESCAPE@1", ErrorKind::Char)));
         let actual = parse_escape(input);
         assert_eq!(actual, expected);
     }
@@ -65,7 +65,7 @@ mod tests {
     #[test]
     fn test_parse_escape_invalid_no_leading_hash() {
         let input = "@ESCAPE@1";
-        let expected = Err(Err::Error(("ESCAPE@1", ErrorKind::OneOf)));
+        let expected = Err(Err::Error(("ESCAPE@1", ErrorKind::Char)));
         let actual = parse_escape(input);
         assert_eq!(actual, expected);
     }
@@ -73,7 +73,7 @@ mod tests {
     #[test]
     fn test_parse_escape_invalid_no_trailing_at() {
         let input = "@#ESCAPE1";
-        let expected = Err(Err::Error(("", ErrorKind::OneOf)));
+        let expected = Err(Err::Error(("", ErrorKind::Char)));
         let actual = parse_escape(input);
         assert_eq!(actual, expected);
     }
@@ -153,7 +153,7 @@ mod tests {
     #[test]
     fn test_parse_optional_line_value_invalid_no_leading_space() {
         let input = "FOO";
-        let expected = Err(Err::Error(("FOO", ErrorKind::OneOf)));
+        let expected = Err(Err::Error(("FOO", ErrorKind::Char)));
         let actual = parse_optional_line_value(input);
         assert_eq!(actual, expected);
     }

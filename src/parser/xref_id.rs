@@ -25,7 +25,7 @@ mod tests {
     #[test]
     fn test_parse_optional_xref_id_invalid_no_trailing_space() {
         let input = "@APS1@";
-        let expected = Err(Err::Error(("", ErrorKind::OneOf)));
+        let expected = Err(Err::Error(("", ErrorKind::Char)));
         let actual = parse_optional_xref_id(input);
         assert_eq!(actual, expected);
     }
