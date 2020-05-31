@@ -22,8 +22,8 @@ pub struct ApiResponse {
 impl From<GedcomTree> for ApiResponse {
     fn from(tree: GedcomTree) -> Self {
         let mut person_id: u32 = 1;
-        let mut family_id: u32 = 10_001;
-        let mut child_id: u32 = 1_000_001;
+        let mut family_id: u32 = 10_000_001;
+        let mut child_id: u32 = 20_000_001;
 
         let mut childs = vec![];
         let mut familys = vec![];
