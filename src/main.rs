@@ -1,48 +1,50 @@
 use clap::{App, Arg};
 use gedcom::gedcom_to_relation_json;
-use std::error::Error;
-use std::fs::File;
-use std::io::{Read, Write};
+use std::{
+    error::Error,
+    fs,
+    fs::File,
+    io::{Read, Write},
+};
 
 fn main() -> Result<(), Box<dyn Error>> {
-    let input_file_arg = Arg::with_name("input")
-        .help("Specify a GEDCOM file to use as input")
-        .long("input")
+    let input_directory_arg = Arg::with_name("directory")
+        .help("Specify a directory containing one or more GEDCOM files to convert")
+        .long("directory")
         .required(true)
-        .short("i")
+        .short("d")
         .takes_value(true)
-        .value_name("input");
-
-    let output_file_arg = Arg::with_name("output")
-        .help("Specify a path to write the JSON output to")
-        .long("output")
-        .required(true)
-        .short("o")
-        .takes_value(true)
-        .value_name("output");
+        .value_name("directory");
 
     let arguments = App::new("gedcom")
         .version("0.1")
-        .arg(input_file_arg)
-        .arg(output_file_arg)
+        .arg(input_directory_arg)
         .get_matches();
 
-    let input_file = arguments
-        .value_of("input")
-        .ok_or("No input file specified")?;
+    let directory = arguments
+        .value_of("directory")
+        .ok_or("No input directory specified")?;
 
-    let output_file = arguments
-        .value_of("output")
-        .ok_or("No output file specified")?;
+    if let Ok(dir_entries) = fs::read_dir(directory) {
+        for entry in dir_entries.into_iter() {
+            match entry {
+                Err(_) => {}
+                Ok(entry) => {
+                    let input_path = entry.path();
+                    let output_path = input_path.with_extension("json");
 
-    let mut input_file = File::open(input_file)?;
-    let mut gedcom_input = String::new();
-    input_file.read_to_string(&mut gedcom_input)?;
+                    let mut input = File::open(input_path)?;
+                    let mut gedcom = String::new();
+                    input.read_to_string(&mut gedcom)?;
 
-    let json = gedcom_to_relation_json(gedcom_input.as_str())?;
+                    let json = gedcom_to_relation_json(gedcom.as_str())?;
 
-    let mut output_file = File::create(output_file)?;
-    output_file.write_all(json.as_bytes())?;
+                    let mut output = File::create(output_path)?;
+                    output.write_all(json.as_bytes())?;
+                }
+            }
+        }
+    }
 
     Ok(())
 }
