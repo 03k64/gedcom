@@ -230,7 +230,7 @@ impl FromStr for GedcomLineTag {
     type Err = &'static str;
 
     fn from_str(value: &str) -> Result<Self, Self::Err> {
-        match value {
+        match value.to_uppercase().as_str() {
             "ABBR" => Ok(Self::Abbreviation),
             "ADDR" => Ok(Self::Address),
             "ADR1" => Ok(Self::Address1),
@@ -367,7 +367,7 @@ impl FromStr for GedcomLineTag {
             "WIFE" => Ok(Self::Wife),
             "WILL" => Ok(Self::Will),
             "WWW" => Ok(Self::Web),
-            value => {
+            _ => {
                 if VALID_CUSTOM_TAG.is_match(value) {
                     Ok(Self::Custom(String::from(value)))
                 } else {
