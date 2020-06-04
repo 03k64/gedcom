@@ -383,1659 +383,389 @@ mod tests {
     use super::GedcomLineTag;
     use std::str::FromStr;
 
-    #[test]
-    fn test_gedcom_line_tag_from_str_abbr() {
-        let input = "ABBR";
-
-        let actual = GedcomLineTag::from_str(input);
-        assert!(actual.is_ok());
-
-        let actual = actual.unwrap();
-        let expected = GedcomLineTag::Abbreviation;
-        assert_eq!(actual, expected);
-    }
-
-    #[test]
-    fn test_gedcom_line_tag_from_str_addr() {
-        let input = "ADDR";
-
-        let actual = GedcomLineTag::from_str(input);
-        assert!(actual.is_ok());
-
-        let actual = actual.unwrap();
-        let expected = GedcomLineTag::Address;
-        assert_eq!(actual, expected);
-    }
-
-    #[test]
-    fn test_gedcom_line_tag_from_str_adr1() {
-        let input = "ADR1";
-
-        let actual = GedcomLineTag::from_str(input);
-        assert!(actual.is_ok());
-
-        let actual = actual.unwrap();
-        let expected = GedcomLineTag::Address1;
-        assert_eq!(actual, expected);
-    }
-
-    #[test]
-    fn test_gedcom_line_tag_from_str_adr2() {
-        let input = "ADR2";
-
-        let actual = GedcomLineTag::from_str(input);
-        assert!(actual.is_ok());
-
-        let actual = actual.unwrap();
-        let expected = GedcomLineTag::Address2;
-        assert_eq!(actual, expected);
-    }
-
-    #[test]
-    fn test_gedcom_line_tag_from_str_adop() {
-        let input = "ADOP";
-
-        let actual = GedcomLineTag::from_str(input);
-        assert!(actual.is_ok());
-
-        let actual = actual.unwrap();
-        let expected = GedcomLineTag::Adoption;
-        assert_eq!(actual, expected);
-    }
-
-    #[test]
-    fn test_gedcom_line_tag_from_str_afn() {
-        let input = "AFN";
-
-        let actual = GedcomLineTag::from_str(input);
-        assert!(actual.is_ok());
-
-        let actual = actual.unwrap();
-        let expected = GedcomLineTag::AncestralFileNumber;
-        assert_eq!(actual, expected);
-    }
-
-    #[test]
-    fn test_gedcom_line_tag_from_str_age() {
-        let input = "AGE";
-
-        let actual = GedcomLineTag::from_str(input);
-        assert!(actual.is_ok());
-
-        let actual = actual.unwrap();
-        let expected = GedcomLineTag::Age;
-        assert_eq!(actual, expected);
-    }
-
-    #[test]
-    fn test_gedcom_line_tag_from_str_agnc() {
-        let input = "AGNC";
-
-        let actual = GedcomLineTag::from_str(input);
-        assert!(actual.is_ok());
-
-        let actual = actual.unwrap();
-        let expected = GedcomLineTag::Agency;
-        assert_eq!(actual, expected);
-    }
-
-    #[test]
-    fn test_gedcom_line_tag_from_str_alia() {
-        let input = "ALIA";
-
-        let actual = GedcomLineTag::from_str(input);
-        assert!(actual.is_ok());
-
-        let actual = actual.unwrap();
-        let expected = GedcomLineTag::Alias;
-        assert_eq!(actual, expected);
-    }
-
-    #[test]
-    fn test_gedcom_line_tag_from_str_ance() {
-        let input = "ANCE";
-
-        let actual = GedcomLineTag::from_str(input);
-        assert!(actual.is_ok());
-
-        let actual = actual.unwrap();
-        let expected = GedcomLineTag::Ancestors;
-        assert_eq!(actual, expected);
-    }
-
-    #[test]
-    fn test_gedcom_line_tag_from_str_anci() {
-        let input = "ANCI";
-
-        let actual = GedcomLineTag::from_str(input);
-        assert!(actual.is_ok());
-
-        let actual = actual.unwrap();
-        let expected = GedcomLineTag::AncestorInterest;
-        assert_eq!(actual, expected);
-    }
-
-    #[test]
-    fn test_gedcom_line_tag_from_str_anul() {
-        let input = "ANUL";
-
-        let actual = GedcomLineTag::from_str(input);
-        assert!(actual.is_ok());
-
-        let actual = actual.unwrap();
-        let expected = GedcomLineTag::Annulment;
-        assert_eq!(actual, expected);
-    }
-
-    #[test]
-    fn test_gedcom_line_tag_from_str_asso() {
-        let input = "ASSO";
-
-        let actual = GedcomLineTag::from_str(input);
-        assert!(actual.is_ok());
-
-        let actual = actual.unwrap();
-        let expected = GedcomLineTag::Associates;
-        assert_eq!(actual, expected);
-    }
-
-    #[test]
-    fn test_gedcom_line_tag_from_str_auth() {
-        let input = "AUTH";
-
-        let actual = GedcomLineTag::from_str(input);
-        assert!(actual.is_ok());
-
-        let actual = actual.unwrap();
-        let expected = GedcomLineTag::Author;
-        assert_eq!(actual, expected);
-    }
-
-    #[test]
-    fn test_gedcom_line_tag_from_str_bapl() {
-        let input = "BAPL";
-
-        let actual = GedcomLineTag::from_str(input);
-        assert!(actual.is_ok());
-
-        let actual = actual.unwrap();
-        let expected = GedcomLineTag::BaptismLds;
-        assert_eq!(actual, expected);
-    }
-
-    #[test]
-    fn test_gedcom_line_tag_from_str_bapm() {
-        let input = "BAPM";
-
-        let actual = GedcomLineTag::from_str(input);
-        assert!(actual.is_ok());
-
-        let actual = actual.unwrap();
-        let expected = GedcomLineTag::Baptism;
-        assert_eq!(actual, expected);
-    }
-
-    #[test]
-    fn test_gedcom_line_tag_from_str_barm() {
-        let input = "BARM";
-
-        let actual = GedcomLineTag::from_str(input);
-        assert!(actual.is_ok());
-
-        let actual = actual.unwrap();
-        let expected = GedcomLineTag::BarMitzvah;
-        assert_eq!(actual, expected);
-    }
-
-    #[test]
-    fn test_gedcom_line_tag_from_str_basm() {
-        let input = "BASM";
-
-        let actual = GedcomLineTag::from_str(input);
-        assert!(actual.is_ok());
-
-        let actual = actual.unwrap();
-        let expected = GedcomLineTag::BasMitzvah;
-        assert_eq!(actual, expected);
-    }
-
-    #[test]
-    fn test_gedcom_line_tag_from_str_birth() {
-        let input = "BIRT";
-
-        let actual = GedcomLineTag::from_str(input);
-        assert!(actual.is_ok());
-
-        let actual = actual.unwrap();
-        let expected = GedcomLineTag::Birth;
-        assert_eq!(actual, expected);
-    }
-
-    #[test]
-    fn test_gedcom_line_tag_from_str_bles() {
-        let input = "BLES";
-
-        let actual = GedcomLineTag::from_str(input);
-        assert!(actual.is_ok());
-
-        let actual = actual.unwrap();
-        let expected = GedcomLineTag::Blessing;
-        assert_eq!(actual, expected);
-    }
-
-    #[test]
-    fn test_gedcom_line_tag_from_str_buri() {
-        let input = "BURI";
-
-        let actual = GedcomLineTag::from_str(input);
-        assert!(actual.is_ok());
-
-        let actual = actual.unwrap();
-        let expected = GedcomLineTag::Burial;
-        assert_eq!(actual, expected);
-    }
-
-    #[test]
-    fn test_gedcom_line_tag_from_str_caln() {
-        let input = "CALN";
-
-        let actual = GedcomLineTag::from_str(input);
-        assert!(actual.is_ok());
-
-        let actual = actual.unwrap();
-        let expected = GedcomLineTag::CallNumber;
-        assert_eq!(actual, expected);
-    }
-
-    #[test]
-    fn test_gedcom_line_tag_from_str_cast() {
-        let input = "CAST";
-
-        let actual = GedcomLineTag::from_str(input);
-        assert!(actual.is_ok());
-
-        let actual = actual.unwrap();
-        let expected = GedcomLineTag::Caste;
-        assert_eq!(actual, expected);
-    }
-
-    #[test]
-    fn test_gedcom_line_tag_from_str_caus() {
-        let input = "CAUS";
-
-        let actual = GedcomLineTag::from_str(input);
-        assert!(actual.is_ok());
-
-        let actual = actual.unwrap();
-        let expected = GedcomLineTag::Cause;
-        assert_eq!(actual, expected);
-    }
-
-    #[test]
-    fn test_gedcom_line_tag_from_str_cens() {
-        let input = "CENS";
-
-        let actual = GedcomLineTag::from_str(input);
-        assert!(actual.is_ok());
-
-        let actual = actual.unwrap();
-        let expected = GedcomLineTag::Census;
-        assert_eq!(actual, expected);
-    }
-
-    #[test]
-    fn test_gedcom_line_tag_from_str_chan() {
-        let input = "CHAN";
-
-        let actual = GedcomLineTag::from_str(input);
-        assert!(actual.is_ok());
-
-        let actual = actual.unwrap();
-        let expected = GedcomLineTag::Change;
-        assert_eq!(actual, expected);
-    }
-
-    #[test]
-    fn test_gedcom_line_tag_from_str_char() {
-        let input = "CHAR";
-
-        let actual = GedcomLineTag::from_str(input);
-        assert!(actual.is_ok());
-
-        let actual = actual.unwrap();
-        let expected = GedcomLineTag::Character;
-        assert_eq!(actual, expected);
-    }
-
-    #[test]
-    fn test_gedcom_line_tag_from_str_chil() {
-        let input = "CHIL";
-
-        let actual = GedcomLineTag::from_str(input);
-        assert!(actual.is_ok());
-
-        let actual = actual.unwrap();
-        let expected = GedcomLineTag::Child;
-        assert_eq!(actual, expected);
-    }
-
-    #[test]
-    fn test_gedcom_line_tag_from_str_chr() {
-        let input = "CHR";
-
-        let actual = GedcomLineTag::from_str(input);
-        assert!(actual.is_ok());
-
-        let actual = actual.unwrap();
-        let expected = GedcomLineTag::Christening;
-        assert_eq!(actual, expected);
-    }
-
-    #[test]
-    fn test_gedcom_line_tag_from_str_chra() {
-        let input = "CHRA";
-
-        let actual = GedcomLineTag::from_str(input);
-        assert!(actual.is_ok());
-
-        let actual = actual.unwrap();
-        let expected = GedcomLineTag::AdultChristening;
-        assert_eq!(actual, expected);
-    }
-
-    #[test]
-    fn test_gedcom_line_tag_from_str_city() {
-        let input = "CITY";
-
-        let actual = GedcomLineTag::from_str(input);
-        assert!(actual.is_ok());
-
-        let actual = actual.unwrap();
-        let expected = GedcomLineTag::City;
-        assert_eq!(actual, expected);
-    }
-
-    #[test]
-    fn test_gedcom_line_tag_from_str_conc() {
-        let input = "CONC";
-
-        let actual = GedcomLineTag::from_str(input);
-        assert!(actual.is_ok());
-
-        let actual = actual.unwrap();
-        let expected = GedcomLineTag::Concatenation;
-        assert_eq!(actual, expected);
-    }
-
-    #[test]
-    fn test_gedcom_line_tag_from_str_conf() {
-        let input = "CONF";
-
-        let actual = GedcomLineTag::from_str(input);
-        assert!(actual.is_ok());
-
-        let actual = actual.unwrap();
-        let expected = GedcomLineTag::Confirmation;
-        assert_eq!(actual, expected);
-    }
-
-    #[test]
-    fn test_gedcom_line_tag_from_str_conl() {
-        let input = "CONL";
-
-        let actual = GedcomLineTag::from_str(input);
-        assert!(actual.is_ok());
-
-        let actual = actual.unwrap();
-        let expected = GedcomLineTag::ConfirmationLds;
-        assert_eq!(actual, expected);
-    }
-
-    #[test]
-    fn test_gedcom_line_tag_from_str_cont() {
-        let input = "CONT";
-
-        let actual = GedcomLineTag::from_str(input);
-        assert!(actual.is_ok());
-
-        let actual = actual.unwrap();
-        let expected = GedcomLineTag::Continued;
-        assert_eq!(actual, expected);
-    }
-
-    #[test]
-    fn test_gedcom_line_tag_from_str_copr() {
-        let input = "COPR";
-
-        let actual = GedcomLineTag::from_str(input);
-        assert!(actual.is_ok());
-
-        let actual = actual.unwrap();
-        let expected = GedcomLineTag::Copyright;
-        assert_eq!(actual, expected);
-    }
-
-    #[test]
-    fn test_gedcom_line_tag_from_str_corp() {
-        let input = "CORP";
-
-        let actual = GedcomLineTag::from_str(input);
-        assert!(actual.is_ok());
-
-        let actual = actual.unwrap();
-        let expected = GedcomLineTag::Corporate;
-        assert_eq!(actual, expected);
-    }
-
-    #[test]
-    fn test_gedcom_line_tag_from_str_crem() {
-        let input = "CREM";
-
-        let actual = GedcomLineTag::from_str(input);
-        assert!(actual.is_ok());
-
-        let actual = actual.unwrap();
-        let expected = GedcomLineTag::Cremation;
-        assert_eq!(actual, expected);
-    }
-
-    #[test]
-    fn test_gedcom_line_tag_from_str_ctry() {
-        let input = "CTRY";
-
-        let actual = GedcomLineTag::from_str(input);
-        assert!(actual.is_ok());
-
-        let actual = actual.unwrap();
-        let expected = GedcomLineTag::Country;
-        assert_eq!(actual, expected);
-    }
-
-    #[test]
-    fn test_gedcom_line_tag_from_str_data() {
-        let input = "DATA";
-
-        let actual = GedcomLineTag::from_str(input);
-        assert!(actual.is_ok());
-
-        let actual = actual.unwrap();
-        let expected = GedcomLineTag::Data;
-        assert_eq!(actual, expected);
-    }
-
-    #[test]
-    fn test_gedcom_line_tag_from_str_date() {
-        let input = "DATE";
-
-        let actual = GedcomLineTag::from_str(input);
-        assert!(actual.is_ok());
-
-        let actual = actual.unwrap();
-        let expected = GedcomLineTag::Date;
-        assert_eq!(actual, expected);
-    }
-
-    #[test]
-    fn test_gedcom_line_tag_from_str_deat() {
-        let input = "DEAT";
-
-        let actual = GedcomLineTag::from_str(input);
-        assert!(actual.is_ok());
-
-        let actual = actual.unwrap();
-        let expected = GedcomLineTag::Death;
-        assert_eq!(actual, expected);
-    }
-
-    #[test]
-    fn test_gedcom_line_tag_from_str_desc() {
-        let input = "DESC";
-
-        let actual = GedcomLineTag::from_str(input);
-        assert!(actual.is_ok());
-
-        let actual = actual.unwrap();
-        let expected = GedcomLineTag::Descendants;
-        assert_eq!(actual, expected);
-    }
-
-    #[test]
-    fn test_gedcom_line_tag_from_str_desi() {
-        let input = "DESI";
-
-        let actual = GedcomLineTag::from_str(input);
-        assert!(actual.is_ok());
-
-        let actual = actual.unwrap();
-        let expected = GedcomLineTag::DescendantInterest;
-        assert_eq!(actual, expected);
-    }
-
-    #[test]
-    fn test_gedcom_line_tag_from_str_dest() {
-        let input = "DEST";
-
-        let actual = GedcomLineTag::from_str(input);
-        assert!(actual.is_ok());
-
-        let actual = actual.unwrap();
-        let expected = GedcomLineTag::Destination;
-        assert_eq!(actual, expected);
-    }
-
-    #[test]
-    fn test_gedcom_line_tag_from_str_div() {
-        let input = "DIV";
-
-        let actual = GedcomLineTag::from_str(input);
-        assert!(actual.is_ok());
-
-        let actual = actual.unwrap();
-        let expected = GedcomLineTag::Divorce;
-        assert_eq!(actual, expected);
-    }
-
-    #[test]
-    fn test_gedcom_line_tag_from_str_divf() {
-        let input = "DIVF";
-
-        let actual = GedcomLineTag::from_str(input);
-        assert!(actual.is_ok());
-
-        let actual = actual.unwrap();
-        let expected = GedcomLineTag::DivorceFiled;
-        assert_eq!(actual, expected);
-    }
-
-    #[test]
-    fn test_gedcom_line_tag_from_str_dscr() {
-        let input = "DSCR";
-
-        let actual = GedcomLineTag::from_str(input);
-        assert!(actual.is_ok());
-
-        let actual = actual.unwrap();
-        let expected = GedcomLineTag::PhysicalDescription;
-        assert_eq!(actual, expected);
-    }
-
-    #[test]
-    fn test_gedcom_line_tag_from_str_educ() {
-        let input = "EDUC";
-
-        let actual = GedcomLineTag::from_str(input);
-        assert!(actual.is_ok());
-
-        let actual = actual.unwrap();
-        let expected = GedcomLineTag::Education;
-        assert_eq!(actual, expected);
-    }
-
-    #[test]
-    fn test_gedcom_line_tag_from_str_emai() {
-        let input = "EMAI";
-
-        let actual = GedcomLineTag::from_str(input);
-        assert!(actual.is_ok());
-
-        let actual = actual.unwrap();
-        let expected = GedcomLineTag::Email;
-        assert_eq!(actual, expected);
-    }
-
-    #[test]
-    fn test_gedcom_line_tag_from_str_emig() {
-        let input = "EMIG";
-
-        let actual = GedcomLineTag::from_str(input);
-        assert!(actual.is_ok());
-
-        let actual = actual.unwrap();
-        let expected = GedcomLineTag::Emigration;
-        assert_eq!(actual, expected);
-    }
-
-    #[test]
-    fn test_gedcom_line_tag_from_str_endl() {
-        let input = "ENDL";
-
-        let actual = GedcomLineTag::from_str(input);
-        assert!(actual.is_ok());
-
-        let actual = actual.unwrap();
-        let expected = GedcomLineTag::Endowment;
-        assert_eq!(actual, expected);
-    }
-
-    #[test]
-    fn test_gedcom_line_tag_from_str_enga() {
-        let input = "ENGA";
-
-        let actual = GedcomLineTag::from_str(input);
-        assert!(actual.is_ok());
-
-        let actual = actual.unwrap();
-        let expected = GedcomLineTag::Engagement;
-        assert_eq!(actual, expected);
-    }
-
-    #[test]
-    fn test_gedcom_line_tag_from_str_even() {
-        let input = "EVEN";
-
-        let actual = GedcomLineTag::from_str(input);
-        assert!(actual.is_ok());
-
-        let actual = actual.unwrap();
-        let expected = GedcomLineTag::Event;
-        assert_eq!(actual, expected);
-    }
-
-    #[test]
-    fn test_gedcom_line_tag_from_str_fact() {
-        let input = "FACT";
-
-        let actual = GedcomLineTag::from_str(input);
-        assert!(actual.is_ok());
-
-        let actual = actual.unwrap();
-        let expected = GedcomLineTag::Fact;
-        assert_eq!(actual, expected);
-    }
-
-    #[test]
-    fn test_gedcom_line_tag_from_str_fam() {
-        let input = "FAM";
-
-        let actual = GedcomLineTag::from_str(input);
-        assert!(actual.is_ok());
-
-        let actual = actual.unwrap();
-        let expected = GedcomLineTag::Family;
-        assert_eq!(actual, expected);
-    }
-
-    #[test]
-    fn test_gedcom_line_tag_from_str_famc() {
-        let input = "FAMC";
-
-        let actual = GedcomLineTag::from_str(input);
-        assert!(actual.is_ok());
-
-        let actual = actual.unwrap();
-        let expected = GedcomLineTag::FamilyChild;
-        assert_eq!(actual, expected);
-    }
-
-    #[test]
-    fn test_gedcom_line_tag_from_str_famf() {
-        let input = "FAMF";
-
-        let actual = GedcomLineTag::from_str(input);
-        assert!(actual.is_ok());
-
-        let actual = actual.unwrap();
-        let expected = GedcomLineTag::FamilyFile;
-        assert_eq!(actual, expected);
-    }
-
-    #[test]
-    fn test_gedcom_line_tag_from_str_fams() {
-        let input = "FAMS";
-
-        let actual = GedcomLineTag::from_str(input);
-        assert!(actual.is_ok());
-
-        let actual = actual.unwrap();
-        let expected = GedcomLineTag::FamilySpouse;
-        assert_eq!(actual, expected);
-    }
-
-    #[test]
-    fn test_gedcom_line_tag_from_str_fax() {
-        let input = "FAX";
-
-        let actual = GedcomLineTag::from_str(input);
-        assert!(actual.is_ok());
-
-        let actual = actual.unwrap();
-        let expected = GedcomLineTag::Facsimile;
-        assert_eq!(actual, expected);
-    }
-
-    #[test]
-    fn test_gedcom_line_tag_from_str_fcom() {
-        let input = "FCOM";
-
-        let actual = GedcomLineTag::from_str(input);
-        assert!(actual.is_ok());
-
-        let actual = actual.unwrap();
-        let expected = GedcomLineTag::FirstCommunion;
-        assert_eq!(actual, expected);
-    }
-
-    #[test]
-    fn test_gedcom_line_tag_from_str_file() {
-        let input = "FILE";
-
-        let actual = GedcomLineTag::from_str(input);
-        assert!(actual.is_ok());
-
-        let actual = actual.unwrap();
-        let expected = GedcomLineTag::File;
-        assert_eq!(actual, expected);
-    }
-
-    #[test]
-    fn test_gedcom_line_tag_from_str_form() {
-        let input = "FORM";
-
-        let actual = GedcomLineTag::from_str(input);
-        assert!(actual.is_ok());
-
-        let actual = actual.unwrap();
-        let expected = GedcomLineTag::Format;
-        assert_eq!(actual, expected);
-    }
-
-    #[test]
-    fn test_gedcom_line_tag_from_str_fone() {
-        let input = "FONE";
-
-        let actual = GedcomLineTag::from_str(input);
-        assert!(actual.is_ok());
-
-        let actual = actual.unwrap();
-        let expected = GedcomLineTag::Phonetic;
-        assert_eq!(actual, expected);
-    }
-
-    #[test]
-    fn test_gedcom_line_tag_from_str_gedc() {
-        let input = "GEDC";
-
-        let actual = GedcomLineTag::from_str(input);
-        assert!(actual.is_ok());
-
-        let actual = actual.unwrap();
-        let expected = GedcomLineTag::Gedcom;
-        assert_eq!(actual, expected);
-    }
-
-    #[test]
-    fn test_gedcom_line_tag_from_str_givn() {
-        let input = "GIVN";
-
-        let actual = GedcomLineTag::from_str(input);
-        assert!(actual.is_ok());
-
-        let actual = actual.unwrap();
-        let expected = GedcomLineTag::GivenName;
-        assert_eq!(actual, expected);
-    }
-
-    #[test]
-    fn test_gedcom_line_tag_from_str_grad() {
-        let input = "GRAD";
-
-        let actual = GedcomLineTag::from_str(input);
-        assert!(actual.is_ok());
-
-        let actual = actual.unwrap();
-        let expected = GedcomLineTag::Graduation;
-        assert_eq!(actual, expected);
-    }
-
-    #[test]
-    fn test_gedcom_line_tag_from_str_head() {
-        let input = "HEAD";
-
-        let actual = GedcomLineTag::from_str(input);
-        assert!(actual.is_ok());
-
-        let actual = actual.unwrap();
-        let expected = GedcomLineTag::Header;
-        assert_eq!(actual, expected);
-    }
-
-    #[test]
-    fn test_gedcom_line_tag_from_str_husb() {
-        let input = "HUSB";
-
-        let actual = GedcomLineTag::from_str(input);
-        assert!(actual.is_ok());
-
-        let actual = actual.unwrap();
-        let expected = GedcomLineTag::Husband;
-        assert_eq!(actual, expected);
-    }
-
-    #[test]
-    fn test_gedcom_line_tag_from_str_idno() {
-        let input = "IDNO";
-
-        let actual = GedcomLineTag::from_str(input);
-        assert!(actual.is_ok());
-
-        let actual = actual.unwrap();
-        let expected = GedcomLineTag::IdentityNumber;
-        assert_eq!(actual, expected);
-    }
-
-    #[test]
-    fn test_gedcom_line_tag_from_str_immi() {
-        let input = "IMMI";
-
-        let actual = GedcomLineTag::from_str(input);
-        assert!(actual.is_ok());
-
-        let actual = actual.unwrap();
-        let expected = GedcomLineTag::Immigration;
-        assert_eq!(actual, expected);
-    }
-
-    #[test]
-    fn test_gedcom_line_tag_from_str_indi() {
-        let input = "INDI";
-
-        let actual = GedcomLineTag::from_str(input);
-        assert!(actual.is_ok());
-
-        let actual = actual.unwrap();
-        let expected = GedcomLineTag::Individual;
-        assert_eq!(actual, expected);
-    }
-
-    #[test]
-    fn test_gedcom_line_tag_from_str_lang() {
-        let input = "LANG";
-
-        let actual = GedcomLineTag::from_str(input);
-        assert!(actual.is_ok());
-
-        let actual = actual.unwrap();
-        let expected = GedcomLineTag::Language;
-        assert_eq!(actual, expected);
-    }
-
-    #[test]
-    fn test_gedcom_line_tag_from_str_lati() {
-        let input = "LATI";
-
-        let actual = GedcomLineTag::from_str(input);
-        assert!(actual.is_ok());
-
-        let actual = actual.unwrap();
-        let expected = GedcomLineTag::Latitude;
-        assert_eq!(actual, expected);
-    }
-
-    #[test]
-    fn test_gedcom_line_tag_from_str_long() {
-        let input = "LONG";
-
-        let actual = GedcomLineTag::from_str(input);
-        assert!(actual.is_ok());
-
-        let actual = actual.unwrap();
-        let expected = GedcomLineTag::Longitude;
-        assert_eq!(actual, expected);
-    }
-
-    #[test]
-    fn test_gedcom_line_tag_from_str_map() {
-        let input = "MAP";
-
-        let actual = GedcomLineTag::from_str(input);
-        assert!(actual.is_ok());
-
-        let actual = actual.unwrap();
-        let expected = GedcomLineTag::Map;
-        assert_eq!(actual, expected);
-    }
-
-    #[test]
-    fn test_gedcom_line_tag_from_str_marb() {
-        let input = "MARB";
-
-        let actual = GedcomLineTag::from_str(input);
-        assert!(actual.is_ok());
-
-        let actual = actual.unwrap();
-        let expected = GedcomLineTag::MarriageBanns;
-        assert_eq!(actual, expected);
-    }
-
-    #[test]
-    fn test_gedcom_line_tag_from_str_marc() {
-        let input = "MARC";
-
-        let actual = GedcomLineTag::from_str(input);
-        assert!(actual.is_ok());
-
-        let actual = actual.unwrap();
-        let expected = GedcomLineTag::MarriageContract;
-        assert_eq!(actual, expected);
-    }
-
-    #[test]
-    fn test_gedcom_line_tag_from_str_marl() {
-        let input = "MARL";
-
-        let actual = GedcomLineTag::from_str(input);
-        assert!(actual.is_ok());
-
-        let actual = actual.unwrap();
-        let expected = GedcomLineTag::MarriageLicense;
-        assert_eq!(actual, expected);
-    }
-
-    #[test]
-    fn test_gedcom_line_tag_from_str_marr() {
-        let input = "MARR";
-
-        let actual = GedcomLineTag::from_str(input);
-        assert!(actual.is_ok());
-
-        let actual = actual.unwrap();
-        let expected = GedcomLineTag::Marriage;
-        assert_eq!(actual, expected);
-    }
-
-    #[test]
-    fn test_gedcom_line_tag_from_str_mars() {
-        let input = "MARS";
-
-        let actual = GedcomLineTag::from_str(input);
-        assert!(actual.is_ok());
-
-        let actual = actual.unwrap();
-        let expected = GedcomLineTag::MarriageSettlement;
-        assert_eq!(actual, expected);
-    }
-
-    #[test]
-    fn test_gedcom_line_tag_from_str_medi() {
-        let input = "MEDI";
-
-        let actual = GedcomLineTag::from_str(input);
-        assert!(actual.is_ok());
-
-        let actual = actual.unwrap();
-        let expected = GedcomLineTag::Media;
-        assert_eq!(actual, expected);
-    }
-
-    #[test]
-    fn test_gedcom_line_tag_from_str_name() {
-        let input = "NAME";
-
-        let actual = GedcomLineTag::from_str(input);
-        assert!(actual.is_ok());
-
-        let actual = actual.unwrap();
-        let expected = GedcomLineTag::Name;
-        assert_eq!(actual, expected);
-    }
-
-    #[test]
-    fn test_gedcom_line_tag_from_str_nati() {
-        let input = "NATI";
-
-        let actual = GedcomLineTag::from_str(input);
-        assert!(actual.is_ok());
-
-        let actual = actual.unwrap();
-        let expected = GedcomLineTag::Nationality;
-        assert_eq!(actual, expected);
-    }
-
-    #[test]
-    fn test_gedcom_line_tag_from_str_natu() {
-        let input = "NATU";
-
-        let actual = GedcomLineTag::from_str(input);
-        assert!(actual.is_ok());
-
-        let actual = actual.unwrap();
-        let expected = GedcomLineTag::Naturalisation;
-        assert_eq!(actual, expected);
-    }
-
-    #[test]
-    fn test_gedcom_line_tag_from_str_nchi() {
-        let input = "NCHI";
-
-        let actual = GedcomLineTag::from_str(input);
-        assert!(actual.is_ok());
-
-        let actual = actual.unwrap();
-        let expected = GedcomLineTag::ChildrenCount;
-        assert_eq!(actual, expected);
-    }
-
-    #[test]
-    fn test_gedcom_line_tag_from_str_nick() {
-        let input = "NICK";
-
-        let actual = GedcomLineTag::from_str(input);
-        assert!(actual.is_ok());
-
-        let actual = actual.unwrap();
-        let expected = GedcomLineTag::Nickname;
-        assert_eq!(actual, expected);
-    }
-
-    #[test]
-    fn test_gedcom_line_tag_from_str_nmr() {
-        let input = "NMR";
-
-        let actual = GedcomLineTag::from_str(input);
-        assert!(actual.is_ok());
-
-        let actual = actual.unwrap();
-        let expected = GedcomLineTag::MarriageCount;
-        assert_eq!(actual, expected);
-    }
-
-    #[test]
-    fn test_gedcom_line_tag_from_str_note() {
-        let input = "NOTE";
-
-        let actual = GedcomLineTag::from_str(input);
-        assert!(actual.is_ok());
-
-        let actual = actual.unwrap();
-        let expected = GedcomLineTag::Note;
-        assert_eq!(actual, expected);
-    }
-
-    #[test]
-    fn test_gedcom_line_tag_from_str_npfx() {
-        let input = "NPFX";
-
-        let actual = GedcomLineTag::from_str(input);
-        assert!(actual.is_ok());
-
-        let actual = actual.unwrap();
-        let expected = GedcomLineTag::NamePrefix;
-        assert_eq!(actual, expected);
-    }
-
-    #[test]
-    fn test_gedcom_line_tag_from_str_nsfx() {
-        let input = "NSFX";
-
-        let actual = GedcomLineTag::from_str(input);
-        assert!(actual.is_ok());
-
-        let actual = actual.unwrap();
-        let expected = GedcomLineTag::NameSuffix;
-        assert_eq!(actual, expected);
-    }
-
-    #[test]
-    fn test_gedcom_line_tag_from_str_obje() {
-        let input = "OBJE";
-
-        let actual = GedcomLineTag::from_str(input);
-        assert!(actual.is_ok());
-
-        let actual = actual.unwrap();
-        let expected = GedcomLineTag::Object;
-        assert_eq!(actual, expected);
-    }
-
-    #[test]
-    fn test_gedcom_line_tag_from_str_occu() {
-        let input = "OCCU";
-
-        let actual = GedcomLineTag::from_str(input);
-        assert!(actual.is_ok());
-
-        let actual = actual.unwrap();
-        let expected = GedcomLineTag::Occupation;
-        assert_eq!(actual, expected);
-    }
-
-    #[test]
-    fn test_gedcom_line_tag_from_str_ordi() {
-        let input = "ORDI";
-
-        let actual = GedcomLineTag::from_str(input);
-        assert!(actual.is_ok());
-
-        let actual = actual.unwrap();
-        let expected = GedcomLineTag::Ordinance;
-        assert_eq!(actual, expected);
-    }
-
-    #[test]
-    fn test_gedcom_line_tag_from_str_ordn() {
-        let input = "ORDN";
-
-        let actual = GedcomLineTag::from_str(input);
-        assert!(actual.is_ok());
-
-        let actual = actual.unwrap();
-        let expected = GedcomLineTag::Ordination;
-        assert_eq!(actual, expected);
-    }
-
-    #[test]
-    fn test_gedcom_line_tag_from_str_page() {
-        let input = "PAGE";
-
-        let actual = GedcomLineTag::from_str(input);
-        assert!(actual.is_ok());
-
-        let actual = actual.unwrap();
-        let expected = GedcomLineTag::Page;
-        assert_eq!(actual, expected);
-    }
-
-    #[test]
-    fn test_gedcom_line_tag_from_str_pedi() {
-        let input = "PEDI";
-
-        let actual = GedcomLineTag::from_str(input);
-        assert!(actual.is_ok());
-
-        let actual = actual.unwrap();
-        let expected = GedcomLineTag::Pedigree;
-        assert_eq!(actual, expected);
-    }
-
-    #[test]
-    fn test_gedcom_line_tag_from_str_phon() {
-        let input = "PHON";
-
-        let actual = GedcomLineTag::from_str(input);
-        assert!(actual.is_ok());
-
-        let actual = actual.unwrap();
-        let expected = GedcomLineTag::Phone;
-        assert_eq!(actual, expected);
-    }
-
-    #[test]
-    fn test_gedcom_line_tag_from_str_plac() {
-        let input = "PLAC";
-
-        let actual = GedcomLineTag::from_str(input);
-        assert!(actual.is_ok());
-
-        let actual = actual.unwrap();
-        let expected = GedcomLineTag::Place;
-        assert_eq!(actual, expected);
-    }
-
-    #[test]
-    fn test_gedcom_line_tag_from_str_post() {
-        let input = "POST";
-
-        let actual = GedcomLineTag::from_str(input);
-        assert!(actual.is_ok());
-
-        let actual = actual.unwrap();
-        let expected = GedcomLineTag::PostalCode;
-        assert_eq!(actual, expected);
-    }
-
-    #[test]
-    fn test_gedcom_line_tag_from_str_prob() {
-        let input = "PROB";
-
-        let actual = GedcomLineTag::from_str(input);
-        assert!(actual.is_ok());
-
-        let actual = actual.unwrap();
-        let expected = GedcomLineTag::Probate;
-        assert_eq!(actual, expected);
-    }
-
-    #[test]
-    fn test_gedcom_line_tag_from_str_prop() {
-        let input = "PROP";
-
-        let actual = GedcomLineTag::from_str(input);
-        assert!(actual.is_ok());
-
-        let actual = actual.unwrap();
-        let expected = GedcomLineTag::Property;
-        assert_eq!(actual, expected);
-    }
-
-    #[test]
-    fn test_gedcom_line_tag_from_str_publ() {
-        let input = "PUBL";
-
-        let actual = GedcomLineTag::from_str(input);
-        assert!(actual.is_ok());
-
-        let actual = actual.unwrap();
-        let expected = GedcomLineTag::Publication;
-        assert_eq!(actual, expected);
-    }
-
-    #[test]
-    fn test_gedcom_line_tag_from_str_quay() {
-        let input = "QUAY";
-
-        let actual = GedcomLineTag::from_str(input);
-        assert!(actual.is_ok());
-
-        let actual = actual.unwrap();
-        let expected = GedcomLineTag::QualityOfData;
-        assert_eq!(actual, expected);
-    }
-
-    #[test]
-    fn test_gedcom_line_tag_from_str_refn() {
-        let input = "REFN";
-
-        let actual = GedcomLineTag::from_str(input);
-        assert!(actual.is_ok());
-
-        let actual = actual.unwrap();
-        let expected = GedcomLineTag::Reference;
-        assert_eq!(actual, expected);
-    }
-
-    #[test]
-    fn test_gedcom_line_tag_from_str_rela() {
-        let input = "RELA";
-
-        let actual = GedcomLineTag::from_str(input);
-        assert!(actual.is_ok());
-
-        let actual = actual.unwrap();
-        let expected = GedcomLineTag::Relationship;
-        assert_eq!(actual, expected);
-    }
-
-    #[test]
-    fn test_gedcom_line_tag_from_str_reli() {
-        let input = "RELI";
-
-        let actual = GedcomLineTag::from_str(input);
-        assert!(actual.is_ok());
-
-        let actual = actual.unwrap();
-        let expected = GedcomLineTag::Religion;
-        assert_eq!(actual, expected);
-    }
-
-    #[test]
-    fn test_gedcom_line_tag_from_str_repo() {
-        let input = "REPO";
-
-        let actual = GedcomLineTag::from_str(input);
-        assert!(actual.is_ok());
-
-        let actual = actual.unwrap();
-        let expected = GedcomLineTag::Repository;
-        assert_eq!(actual, expected);
-    }
-
-    #[test]
-    fn test_gedcom_line_tag_from_str_resi() {
-        let input = "RESI";
-
-        let actual = GedcomLineTag::from_str(input);
-        assert!(actual.is_ok());
-
-        let actual = actual.unwrap();
-        let expected = GedcomLineTag::Residence;
-        assert_eq!(actual, expected);
-    }
-
-    #[test]
-    fn test_gedcom_line_tag_from_str_resn() {
-        let input = "RESN";
-
-        let actual = GedcomLineTag::from_str(input);
-        assert!(actual.is_ok());
-
-        let actual = actual.unwrap();
-        let expected = GedcomLineTag::Restriction;
-        assert_eq!(actual, expected);
-    }
-
-    #[test]
-    fn test_gedcom_line_tag_from_str_reti() {
-        let input = "RETI";
-
-        let actual = GedcomLineTag::from_str(input);
-        assert!(actual.is_ok());
-
-        let actual = actual.unwrap();
-        let expected = GedcomLineTag::Retirement;
-        assert_eq!(actual, expected);
-    }
-
-    #[test]
-    fn test_gedcom_line_tag_from_str_rfn() {
-        let input = "RFN";
-
-        let actual = GedcomLineTag::from_str(input);
-        assert!(actual.is_ok());
-
-        let actual = actual.unwrap();
-        let expected = GedcomLineTag::RecordFileNumber;
-        assert_eq!(actual, expected);
-    }
-
-    #[test]
-    fn test_gedcom_line_tag_from_str_rin() {
-        let input = "RIN";
-
-        let actual = GedcomLineTag::from_str(input);
-        assert!(actual.is_ok());
-
-        let actual = actual.unwrap();
-        let expected = GedcomLineTag::RecordIdNumber;
-        assert_eq!(actual, expected);
-    }
-
-    #[test]
-    fn test_gedcom_line_tag_from_str_role() {
-        let input = "ROLE";
-
-        let actual = GedcomLineTag::from_str(input);
-        assert!(actual.is_ok());
-
-        let actual = actual.unwrap();
-        let expected = GedcomLineTag::Role;
-        assert_eq!(actual, expected);
-    }
-
-    #[test]
-    fn test_gedcom_line_tag_from_str_romn() {
-        let input = "ROMN";
-
-        let actual = GedcomLineTag::from_str(input);
-        assert!(actual.is_ok());
-
-        let actual = actual.unwrap();
-        let expected = GedcomLineTag::Romanised;
-        assert_eq!(actual, expected);
-    }
-
-    #[test]
-    fn test_gedcom_line_tag_from_str_sex() {
-        let input = "SEX";
-
-        let actual = GedcomLineTag::from_str(input);
-        assert!(actual.is_ok());
-
-        let actual = actual.unwrap();
-        let expected = GedcomLineTag::Sex;
-        assert_eq!(actual, expected);
-    }
-
-    #[test]
-    fn test_gedcom_line_tag_from_str_slgc() {
-        let input = "SLGC";
-
-        let actual = GedcomLineTag::from_str(input);
-        assert!(actual.is_ok());
-
-        let actual = actual.unwrap();
-        let expected = GedcomLineTag::SealingChild;
-        assert_eq!(actual, expected);
-    }
-
-    #[test]
-    fn test_gedcom_line_tag_from_str_slgs() {
-        let input = "SLGS";
-
-        let actual = GedcomLineTag::from_str(input);
-        assert!(actual.is_ok());
-
-        let actual = actual.unwrap();
-        let expected = GedcomLineTag::SealingSpouse;
-        assert_eq!(actual, expected);
-    }
-
-    #[test]
-    fn test_gedcom_line_tag_from_str_sour() {
-        let input = "SOUR";
-
-        let actual = GedcomLineTag::from_str(input);
-        assert!(actual.is_ok());
-
-        let actual = actual.unwrap();
-        let expected = GedcomLineTag::Source;
-        assert_eq!(actual, expected);
-    }
-
-    #[test]
-    fn test_gedcom_line_tag_from_str_spfx() {
-        let input = "SPFX";
-
-        let actual = GedcomLineTag::from_str(input);
-        assert!(actual.is_ok());
-
-        let actual = actual.unwrap();
-        let expected = GedcomLineTag::SurnamePrefix;
-        assert_eq!(actual, expected);
-    }
-
-    #[test]
-    fn test_gedcom_line_tag_from_str_ssn() {
-        let input = "SSN";
-
-        let actual = GedcomLineTag::from_str(input);
-        assert!(actual.is_ok());
-
-        let actual = actual.unwrap();
-        let expected = GedcomLineTag::SocialSecurityNumber;
-        assert_eq!(actual, expected);
-    }
-
-    #[test]
-    fn test_gedcom_line_tag_from_str_stae() {
-        let input = "STAE";
-
-        let actual = GedcomLineTag::from_str(input);
-        assert!(actual.is_ok());
-
-        let actual = actual.unwrap();
-        let expected = GedcomLineTag::State;
-        assert_eq!(actual, expected);
-    }
-
-    #[test]
-    fn test_gedcom_line_tag_from_str_stat() {
-        let input = "STAT";
-
-        let actual = GedcomLineTag::from_str(input);
-        assert!(actual.is_ok());
-
-        let actual = actual.unwrap();
-        let expected = GedcomLineTag::Status;
-        assert_eq!(actual, expected);
-    }
-
-    #[test]
-    fn test_gedcom_line_tag_from_str_subm() {
-        let input = "SUBM";
-
-        let actual = GedcomLineTag::from_str(input);
-        assert!(actual.is_ok());
-
-        let actual = actual.unwrap();
-        let expected = GedcomLineTag::Submitter;
-        assert_eq!(actual, expected);
-    }
-
-    #[test]
-    fn test_gedcom_line_tag_from_str_subn() {
-        let input = "SUBN";
-
-        let actual = GedcomLineTag::from_str(input);
-        assert!(actual.is_ok());
-
-        let actual = actual.unwrap();
-        let expected = GedcomLineTag::Submission;
-        assert_eq!(actual, expected);
-    }
-
-    #[test]
-    fn test_gedcom_line_tag_from_str_surn() {
-        let input = "SURN";
-
-        let actual = GedcomLineTag::from_str(input);
-        assert!(actual.is_ok());
-
-        let actual = actual.unwrap();
-        let expected = GedcomLineTag::Surname;
-        assert_eq!(actual, expected);
-    }
-
-    #[test]
-    fn test_gedcom_line_tag_from_str_temp() {
-        let input = "TEMP";
-
-        let actual = GedcomLineTag::from_str(input);
-        assert!(actual.is_ok());
-
-        let actual = actual.unwrap();
-        let expected = GedcomLineTag::Temple;
-        assert_eq!(actual, expected);
-    }
-
-    #[test]
-    fn test_gedcom_line_tag_from_str_text() {
-        let input = "TEXT";
-
-        let actual = GedcomLineTag::from_str(input);
-        assert!(actual.is_ok());
-
-        let actual = actual.unwrap();
-        let expected = GedcomLineTag::Text;
-        assert_eq!(actual, expected);
-    }
-
-    #[test]
-    fn test_gedcom_line_tag_from_str_time() {
-        let input = "TIME";
-
-        let actual = GedcomLineTag::from_str(input);
-        assert!(actual.is_ok());
-
-        let actual = actual.unwrap();
-        let expected = GedcomLineTag::Time;
-        assert_eq!(actual, expected);
-    }
-
-    #[test]
-    fn test_gedcom_line_tag_from_str_titl() {
-        let input = "TITL";
-
-        let actual = GedcomLineTag::from_str(input);
-        assert!(actual.is_ok());
-
-        let actual = actual.unwrap();
-        let expected = GedcomLineTag::Title;
-        assert_eq!(actual, expected);
-    }
-
-    #[test]
-    fn test_gedcom_line_tag_from_str_trlr() {
-        let input = "TRLR";
-
-        let actual = GedcomLineTag::from_str(input);
-        assert!(actual.is_ok());
-
-        let actual = actual.unwrap();
-        let expected = GedcomLineTag::Trailer;
-        assert_eq!(actual, expected);
-    }
-
-    #[test]
-    fn test_gedcom_line_tag_from_str_type() {
-        let input = "TYPE";
-
-        let actual = GedcomLineTag::from_str(input);
-        assert!(actual.is_ok());
-
-        let actual = actual.unwrap();
-        let expected = GedcomLineTag::Type;
-        assert_eq!(actual, expected);
-    }
-
-    #[test]
-    fn test_gedcom_line_tag_from_str_vers() {
-        let input = "VERS";
-
-        let actual = GedcomLineTag::from_str(input);
-        assert!(actual.is_ok());
-
-        let actual = actual.unwrap();
-        let expected = GedcomLineTag::Version;
-        assert_eq!(actual, expected);
-    }
-
-    #[test]
-    fn test_gedcom_line_tag_from_str_wife() {
-        let input = "WIFE";
-
-        let actual = GedcomLineTag::from_str(input);
-        assert!(actual.is_ok());
-
-        let actual = actual.unwrap();
-        let expected = GedcomLineTag::Wife;
-        assert_eq!(actual, expected);
-    }
-
-    #[test]
-    fn test_gedcom_line_tag_from_str_will() {
-        let input = "WILL";
-
-        let actual = GedcomLineTag::from_str(input);
-        assert!(actual.is_ok());
-
-        let actual = actual.unwrap();
-        let expected = GedcomLineTag::Will;
-        assert_eq!(actual, expected);
-    }
-
-    #[test]
-    fn test_gedcom_line_tag_from_str_www() {
-        let input = "WWW";
-
-        let actual = GedcomLineTag::from_str(input);
-        assert!(actual.is_ok());
-
-        let actual = actual.unwrap();
-        let expected = GedcomLineTag::Web;
-        assert_eq!(actual, expected);
-    }
-
-    #[test]
-    fn test_gedcom_line_tag_from_valid_custom() {
-        let input = "_CUSTOM";
-
-        let actual = GedcomLineTag::from_str(input);
-        assert!(actual.is_ok());
-
-        let actual = actual.unwrap();
-        let expected = GedcomLineTag::Custom(String::from("_CUSTOM"));
-        assert_eq!(actual, expected);
-    }
-
-    #[test]
-    fn test_gedcom_line_tag_from_invalid_custom() {
+    macro_rules! tag_test {
+        ($test_name:ident, $input:literal, $expected:expr) => {
+            #[test]
+            fn $test_name() {
+                let actual = GedcomLineTag::from_str($input);
+                assert!(actual.is_ok());
+                let actual = actual.unwrap();
+                assert_eq!(actual, $expected);
+            }
+        };
+    }
+
+    #[test]
+    fn test_from_str_custom_tag_invalid() {
         let input = "INVALID";
-
-        let actual = GedcomLineTag::from_str(input);
-        assert!(actual.is_err());
-
         let expected =
             Err("Custom tag value must start with _ and contain only A-Z, a-z, 0-9 and _");
+        let actual = GedcomLineTag::from_str(input);
         assert_eq!(actual, expected);
     }
+
+    #[test]
+    fn test_from_str_custom_lowercase_tag_invalid() {
+        let input = "invalid";
+        let expected =
+            Err("Custom tag value must start with _ and contain only A-Z, a-z, 0-9 and _");
+        let actual = GedcomLineTag::from_str(input);
+        assert_eq!(actual, expected);
+    }
+
+    #[test]
+    fn test_from_str_custom_mixedcase_tag_invalid() {
+        let input = "InVaLiD";
+        let expected =
+            Err("Custom tag value must start with _ and contain only A-Z, a-z, 0-9 and _");
+        let actual = GedcomLineTag::from_str(input);
+        assert_eq!(actual, expected);
+    }
+
+    tag_test!(
+        test_from_str_custom_tag_valid,
+        "_VALID",
+        GedcomLineTag::Custom(String::from("_VALID"))
+    );
+
+    tag_test!(
+        test_from_str_custom_lowercase_tag_valid,
+        "_valid",
+        GedcomLineTag::Custom(String::from("_valid"))
+    );
+
+    tag_test!(
+        test_from_str_custom_mixedcase_tag_valid,
+        "_VaLiD",
+        GedcomLineTag::Custom(String::from("_VaLiD"))
+    );
+
+    tag_test!(test_from_str_abbr, "ABBR", GedcomLineTag::Abbreviation);
+    tag_test!(test_from_str_abbr_lc, "abbr", GedcomLineTag::Abbreviation);
+    tag_test!(test_from_str_addr, "ADDR", GedcomLineTag::Address);
+    tag_test!(test_from_str_addr_lc, "addr", GedcomLineTag::Address);
+    tag_test!(test_from_str_adr1, "ADR1", GedcomLineTag::Address1);
+    tag_test!(test_from_str_adr1_lc, "adr1", GedcomLineTag::Address1);
+    tag_test!(test_from_str_adr2, "ADR2", GedcomLineTag::Address2);
+    tag_test!(test_from_str_adr2_lc, "adr2", GedcomLineTag::Address2);
+    tag_test!(test_from_str_adop, "ADOP", GedcomLineTag::Adoption);
+    tag_test!(test_from_str_adop_lc, "adop", GedcomLineTag::Adoption);
+    tag_test!(test_from_str_afn, "AFN", GedcomLineTag::AncestralFileNumber);
+    tag_test!(
+        test_from_str_afn_lc,
+        "afn",
+        GedcomLineTag::AncestralFileNumber
+    );
+    tag_test!(test_from_str_age, "AGE", GedcomLineTag::Age);
+    tag_test!(test_from_str_age_lc, "age", GedcomLineTag::Age);
+    tag_test!(test_from_str_agnc, "AGNC", GedcomLineTag::Agency);
+    tag_test!(test_from_str_agnc_lc, "agnc", GedcomLineTag::Agency);
+    tag_test!(test_from_str_alia, "ALIA", GedcomLineTag::Alias);
+    tag_test!(test_from_str_alia_lc, "alia", GedcomLineTag::Alias);
+    tag_test!(test_from_str_ance, "ANCE", GedcomLineTag::Ancestors);
+    tag_test!(test_from_str_ance_lc, "ance", GedcomLineTag::Ancestors);
+    tag_test!(test_from_str_anci, "ANCI", GedcomLineTag::AncestorInterest);
+    tag_test!(
+        test_from_str_anci_lc,
+        "anci",
+        GedcomLineTag::AncestorInterest
+    );
+    tag_test!(test_from_str_anul, "ANUL", GedcomLineTag::Annulment);
+    tag_test!(test_from_str_anul_lc, "anul", GedcomLineTag::Annulment);
+    tag_test!(test_from_str_asso, "ASSO", GedcomLineTag::Associates);
+    tag_test!(test_from_str_asso_lc, "asso", GedcomLineTag::Associates);
+    tag_test!(test_from_str_auth, "AUTH", GedcomLineTag::Author);
+    tag_test!(test_from_str_auth_lc, "auth", GedcomLineTag::Author);
+    tag_test!(test_from_str_bapl, "BAPL", GedcomLineTag::BaptismLds);
+    tag_test!(test_from_str_bapl_lc, "bapl", GedcomLineTag::BaptismLds);
+    tag_test!(test_from_str_bapm, "BAPM", GedcomLineTag::Baptism);
+    tag_test!(test_from_str_bapm_lc, "bapm", GedcomLineTag::Baptism);
+    tag_test!(test_from_str_barm, "BARM", GedcomLineTag::BarMitzvah);
+    tag_test!(test_from_str_barm_lc, "barm", GedcomLineTag::BarMitzvah);
+    tag_test!(test_from_str_basm, "BASM", GedcomLineTag::BasMitzvah);
+    tag_test!(test_from_str_basm_lc, "basm", GedcomLineTag::BasMitzvah);
+    tag_test!(test_from_str_birt, "BIRT", GedcomLineTag::Birth);
+    tag_test!(test_from_str_birt_lc, "birt", GedcomLineTag::Birth);
+    tag_test!(test_from_str_bles, "BLES", GedcomLineTag::Blessing);
+    tag_test!(test_from_str_bles_lc, "bles", GedcomLineTag::Blessing);
+    tag_test!(test_from_str_buri, "BURI", GedcomLineTag::Burial);
+    tag_test!(test_from_str_buri_lc, "buri", GedcomLineTag::Burial);
+    tag_test!(test_from_str_caln, "CALN", GedcomLineTag::CallNumber);
+    tag_test!(test_from_str_caln_lc, "caln", GedcomLineTag::CallNumber);
+    tag_test!(test_from_str_cast, "CAST", GedcomLineTag::Caste);
+    tag_test!(test_from_str_cast_lc, "cast", GedcomLineTag::Caste);
+    tag_test!(test_from_str_caus, "CAUS", GedcomLineTag::Cause);
+    tag_test!(test_from_str_caus_lc, "caus", GedcomLineTag::Cause);
+    tag_test!(test_from_str_cens, "CENS", GedcomLineTag::Census);
+    tag_test!(test_from_str_cens_lc, "cens", GedcomLineTag::Census);
+    tag_test!(test_from_str_chan, "CHAN", GedcomLineTag::Change);
+    tag_test!(test_from_str_chan_lc, "chan", GedcomLineTag::Change);
+    tag_test!(test_from_str_char, "CHAR", GedcomLineTag::Character);
+    tag_test!(test_from_str_char_lc, "char", GedcomLineTag::Character);
+    tag_test!(test_from_str_chil, "CHIL", GedcomLineTag::Child);
+    tag_test!(test_from_str_chil_lc, "chil", GedcomLineTag::Child);
+    tag_test!(test_from_str_chr, "CHR", GedcomLineTag::Christening);
+    tag_test!(test_from_str_chr_lc, "chr", GedcomLineTag::Christening);
+    tag_test!(test_from_str_chra, "CHRA", GedcomLineTag::AdultChristening);
+    tag_test!(
+        test_from_str_chra_lc,
+        "chra",
+        GedcomLineTag::AdultChristening
+    );
+    tag_test!(test_from_str_city, "CITY", GedcomLineTag::City);
+    tag_test!(test_from_str_city_lc, "city", GedcomLineTag::City);
+    tag_test!(test_from_str_conc, "CONC", GedcomLineTag::Concatenation);
+    tag_test!(test_from_str_conc_lc, "conc", GedcomLineTag::Concatenation);
+    tag_test!(test_from_str_conf, "CONF", GedcomLineTag::Confirmation);
+    tag_test!(test_from_str_conf_lc, "conf", GedcomLineTag::Confirmation);
+    tag_test!(test_from_str_conl, "CONL", GedcomLineTag::ConfirmationLds);
+    tag_test!(
+        test_from_str_conl_lc,
+        "conl",
+        GedcomLineTag::ConfirmationLds
+    );
+    tag_test!(test_from_str_cont, "CONT", GedcomLineTag::Continued);
+    tag_test!(test_from_str_cont_lc, "cont", GedcomLineTag::Continued);
+    tag_test!(test_from_str_copr, "COPR", GedcomLineTag::Copyright);
+    tag_test!(test_from_str_copr_lc, "copr", GedcomLineTag::Copyright);
+    tag_test!(test_from_str_corp, "CORP", GedcomLineTag::Corporate);
+    tag_test!(test_from_str_corp_lc, "corp", GedcomLineTag::Corporate);
+    tag_test!(test_from_str_crem, "CREM", GedcomLineTag::Cremation);
+    tag_test!(test_from_str_crem_lc, "crem", GedcomLineTag::Cremation);
+    tag_test!(test_from_str_ctry, "CTRY", GedcomLineTag::Country);
+    tag_test!(test_from_str_ctry_lc, "ctry", GedcomLineTag::Country);
+    tag_test!(test_from_str_data, "DATA", GedcomLineTag::Data);
+    tag_test!(test_from_str_data_lc, "data", GedcomLineTag::Data);
+    tag_test!(test_from_str_date, "DATE", GedcomLineTag::Date);
+    tag_test!(test_from_str_date_lc, "date", GedcomLineTag::Date);
+    tag_test!(test_from_str_deat, "DEAT", GedcomLineTag::Death);
+    tag_test!(test_from_str_deat_lc, "deat", GedcomLineTag::Death);
+    tag_test!(test_from_str_desc, "DESC", GedcomLineTag::Descendants);
+    tag_test!(test_from_str_desc_lc, "desc", GedcomLineTag::Descendants);
+    tag_test!(
+        test_from_str_desi,
+        "DESI",
+        GedcomLineTag::DescendantInterest
+    );
+    tag_test!(
+        test_from_str_desi_lc,
+        "desi",
+        GedcomLineTag::DescendantInterest
+    );
+    tag_test!(test_from_str_dest, "DEST", GedcomLineTag::Destination);
+    tag_test!(test_from_str_dest_lc, "dest", GedcomLineTag::Destination);
+    tag_test!(test_from_str_div, "DIV", GedcomLineTag::Divorce);
+    tag_test!(test_from_str_div_lc, "div", GedcomLineTag::Divorce);
+    tag_test!(test_from_str_divf, "DIVF", GedcomLineTag::DivorceFiled);
+    tag_test!(test_from_str_divf_lc, "divf", GedcomLineTag::DivorceFiled);
+    tag_test!(
+        test_from_str_dscr,
+        "DSCR",
+        GedcomLineTag::PhysicalDescription
+    );
+    tag_test!(
+        test_from_str_dscr_lc,
+        "dscr",
+        GedcomLineTag::PhysicalDescription
+    );
+    tag_test!(test_from_str_educ, "EDUC", GedcomLineTag::Education);
+    tag_test!(test_from_str_educ_lc, "educ", GedcomLineTag::Education);
+    tag_test!(test_from_str_emai, "EMAI", GedcomLineTag::Email);
+    tag_test!(test_from_str_emai_lc, "emai", GedcomLineTag::Email);
+    tag_test!(test_from_str_emig, "EMIG", GedcomLineTag::Emigration);
+    tag_test!(test_from_str_emig_lc, "emig", GedcomLineTag::Emigration);
+    tag_test!(test_from_str_endl, "ENDL", GedcomLineTag::Endowment);
+    tag_test!(test_from_str_endl_lc, "endl", GedcomLineTag::Endowment);
+    tag_test!(test_from_str_enga, "ENGA", GedcomLineTag::Engagement);
+    tag_test!(test_from_str_enga_lc, "enga", GedcomLineTag::Engagement);
+    tag_test!(test_from_str_even, "EVEN", GedcomLineTag::Event);
+    tag_test!(test_from_str_even_lc, "even", GedcomLineTag::Event);
+    tag_test!(test_from_str_fact, "FACT", GedcomLineTag::Fact);
+    tag_test!(test_from_str_fact_lc, "fact", GedcomLineTag::Fact);
+    tag_test!(test_from_str_fam, "FAM", GedcomLineTag::Family);
+    tag_test!(test_from_str_fam_lc, "fam", GedcomLineTag::Family);
+    tag_test!(test_from_str_famc, "FAMC", GedcomLineTag::FamilyChild);
+    tag_test!(test_from_str_famc_lc, "famc", GedcomLineTag::FamilyChild);
+    tag_test!(test_from_str_famf, "FAMF", GedcomLineTag::FamilyFile);
+    tag_test!(test_from_str_famf_lc, "famf", GedcomLineTag::FamilyFile);
+    tag_test!(test_from_str_fams, "FAMS", GedcomLineTag::FamilySpouse);
+    tag_test!(test_from_str_fams_lc, "fams", GedcomLineTag::FamilySpouse);
+    tag_test!(test_from_str_fax, "FAX", GedcomLineTag::Facsimile);
+    tag_test!(test_from_str_fax_lc, "fax", GedcomLineTag::Facsimile);
+    tag_test!(test_from_str_fcom, "FCOM", GedcomLineTag::FirstCommunion);
+    tag_test!(test_from_str_fcom_lc, "fcom", GedcomLineTag::FirstCommunion);
+    tag_test!(test_from_str_file, "FILE", GedcomLineTag::File);
+    tag_test!(test_from_str_file_lc, "file", GedcomLineTag::File);
+    tag_test!(test_from_str_form, "FORM", GedcomLineTag::Format);
+    tag_test!(test_from_str_form_lc, "form", GedcomLineTag::Format);
+    tag_test!(test_from_str_fone, "FONE", GedcomLineTag::Phonetic);
+    tag_test!(test_from_str_fone_lc, "fone", GedcomLineTag::Phonetic);
+    tag_test!(test_from_str_gedc, "GEDC", GedcomLineTag::Gedcom);
+    tag_test!(test_from_str_gedc_lc, "gedc", GedcomLineTag::Gedcom);
+    tag_test!(test_from_str_givn, "GIVN", GedcomLineTag::GivenName);
+    tag_test!(test_from_str_givn_lc, "givn", GedcomLineTag::GivenName);
+    tag_test!(test_from_str_grad, "GRAD", GedcomLineTag::Graduation);
+    tag_test!(test_from_str_grad_lc, "grad", GedcomLineTag::Graduation);
+    tag_test!(test_from_str_head, "HEAD", GedcomLineTag::Header);
+    tag_test!(test_from_str_head_lc, "head", GedcomLineTag::Header);
+    tag_test!(test_from_str_husb, "HUSB", GedcomLineTag::Husband);
+    tag_test!(test_from_str_husb_lc, "husb", GedcomLineTag::Husband);
+    tag_test!(test_from_str_idno, "IDNO", GedcomLineTag::IdentityNumber);
+    tag_test!(test_from_str_idno_lc, "idno", GedcomLineTag::IdentityNumber);
+    tag_test!(test_from_str_immi, "IMMI", GedcomLineTag::Immigration);
+    tag_test!(test_from_str_immi_lc, "immi", GedcomLineTag::Immigration);
+    tag_test!(test_from_str_indi, "INDI", GedcomLineTag::Individual);
+    tag_test!(test_from_str_indi_lc, "indi", GedcomLineTag::Individual);
+    tag_test!(test_from_str_lang, "LANG", GedcomLineTag::Language);
+    tag_test!(test_from_str_lang_lc, "lang", GedcomLineTag::Language);
+    tag_test!(test_from_str_lati, "LATI", GedcomLineTag::Latitude);
+    tag_test!(test_from_str_lati_lc, "lati", GedcomLineTag::Latitude);
+    tag_test!(test_from_str_long, "LONG", GedcomLineTag::Longitude);
+    tag_test!(test_from_str_long_lc, "long", GedcomLineTag::Longitude);
+    tag_test!(test_from_str_map, "MAP", GedcomLineTag::Map);
+    tag_test!(test_from_str_map_lc, "map", GedcomLineTag::Map);
+    tag_test!(test_from_str_marb, "MARB", GedcomLineTag::MarriageBanns);
+    tag_test!(test_from_str_marb_lc, "marb", GedcomLineTag::MarriageBanns);
+    tag_test!(test_from_str_marc, "MARC", GedcomLineTag::MarriageContract);
+    tag_test!(
+        test_from_str_marc_lc,
+        "marc",
+        GedcomLineTag::MarriageContract
+    );
+    tag_test!(test_from_str_marl, "MARL", GedcomLineTag::MarriageLicense);
+    tag_test!(
+        test_from_str_marl_lc,
+        "marl",
+        GedcomLineTag::MarriageLicense
+    );
+    tag_test!(test_from_str_marr, "MARR", GedcomLineTag::Marriage);
+    tag_test!(test_from_str_marr_lc, "marr", GedcomLineTag::Marriage);
+    tag_test!(
+        test_from_str_mars,
+        "MARS",
+        GedcomLineTag::MarriageSettlement
+    );
+    tag_test!(
+        test_from_str_mars_lc,
+        "mars",
+        GedcomLineTag::MarriageSettlement
+    );
+    tag_test!(test_from_str_medi, "MEDI", GedcomLineTag::Media);
+    tag_test!(test_from_str_medi_lc, "medi", GedcomLineTag::Media);
+    tag_test!(test_from_str_name, "NAME", GedcomLineTag::Name);
+    tag_test!(test_from_str_name_lc, "name", GedcomLineTag::Name);
+    tag_test!(test_from_str_nati, "NATI", GedcomLineTag::Nationality);
+    tag_test!(test_from_str_nati_lc, "nati", GedcomLineTag::Nationality);
+    tag_test!(test_from_str_natu, "NATU", GedcomLineTag::Naturalisation);
+    tag_test!(test_from_str_natu_lc, "natu", GedcomLineTag::Naturalisation);
+    tag_test!(test_from_str_nchi, "NCHI", GedcomLineTag::ChildrenCount);
+    tag_test!(test_from_str_nchi_lc, "nchi", GedcomLineTag::ChildrenCount);
+    tag_test!(test_from_str_nick, "NICK", GedcomLineTag::Nickname);
+    tag_test!(test_from_str_nick_lc, "nick", GedcomLineTag::Nickname);
+    tag_test!(test_from_str_nmr, "NMR", GedcomLineTag::MarriageCount);
+    tag_test!(test_from_str_nmr_lc, "nmr", GedcomLineTag::MarriageCount);
+    tag_test!(test_from_str_note, "NOTE", GedcomLineTag::Note);
+    tag_test!(test_from_str_note_lc, "note", GedcomLineTag::Note);
+    tag_test!(test_from_str_npfx, "NPFX", GedcomLineTag::NamePrefix);
+    tag_test!(test_from_str_npfx_lc, "npfx", GedcomLineTag::NamePrefix);
+    tag_test!(test_from_str_nsfx, "NSFX", GedcomLineTag::NameSuffix);
+    tag_test!(test_from_str_nsfx_lc, "nsfx", GedcomLineTag::NameSuffix);
+    tag_test!(test_from_str_obje, "OBJE", GedcomLineTag::Object);
+    tag_test!(test_from_str_obje_lc, "obje", GedcomLineTag::Object);
+    tag_test!(test_from_str_occu, "OCCU", GedcomLineTag::Occupation);
+    tag_test!(test_from_str_occu_lc, "occu", GedcomLineTag::Occupation);
+    tag_test!(test_from_str_ordi, "ORDI", GedcomLineTag::Ordinance);
+    tag_test!(test_from_str_ordi_lc, "ordi", GedcomLineTag::Ordinance);
+    tag_test!(test_from_str_ordn, "ORDN", GedcomLineTag::Ordination);
+    tag_test!(test_from_str_ordn_lc, "ordn", GedcomLineTag::Ordination);
+    tag_test!(test_from_str_page, "PAGE", GedcomLineTag::Page);
+    tag_test!(test_from_str_page_lc, "page", GedcomLineTag::Page);
+    tag_test!(test_from_str_pedi, "PEDI", GedcomLineTag::Pedigree);
+    tag_test!(test_from_str_pedi_lc, "pedi", GedcomLineTag::Pedigree);
+    tag_test!(test_from_str_phon, "PHON", GedcomLineTag::Phone);
+    tag_test!(test_from_str_phon_lc, "phon", GedcomLineTag::Phone);
+    tag_test!(test_from_str_plac, "PLAC", GedcomLineTag::Place);
+    tag_test!(test_from_str_plac_lc, "plac", GedcomLineTag::Place);
+    tag_test!(test_from_str_post, "POST", GedcomLineTag::PostalCode);
+    tag_test!(test_from_str_post_lc, "post", GedcomLineTag::PostalCode);
+    tag_test!(test_from_str_prob, "PROB", GedcomLineTag::Probate);
+    tag_test!(test_from_str_prob_lc, "prob", GedcomLineTag::Probate);
+    tag_test!(test_from_str_prop, "PROP", GedcomLineTag::Property);
+    tag_test!(test_from_str_prop_lc, "prop", GedcomLineTag::Property);
+    tag_test!(test_from_str_publ, "PUBL", GedcomLineTag::Publication);
+    tag_test!(test_from_str_publ_lc, "publ", GedcomLineTag::Publication);
+    tag_test!(test_from_str_quay, "QUAY", GedcomLineTag::QualityOfData);
+    tag_test!(test_from_str_quay_lc, "quay", GedcomLineTag::QualityOfData);
+    tag_test!(test_from_str_refn, "REFN", GedcomLineTag::Reference);
+    tag_test!(test_from_str_refn_lc, "refn", GedcomLineTag::Reference);
+    tag_test!(test_from_str_rela, "RELA", GedcomLineTag::Relationship);
+    tag_test!(test_from_str_rela_lc, "rela", GedcomLineTag::Relationship);
+    tag_test!(test_from_str_reli, "RELI", GedcomLineTag::Religion);
+    tag_test!(test_from_str_reli_lc, "reli", GedcomLineTag::Religion);
+    tag_test!(test_from_str_repo, "REPO", GedcomLineTag::Repository);
+    tag_test!(test_from_str_repo_lc, "repo", GedcomLineTag::Repository);
+    tag_test!(test_from_str_resi, "RESI", GedcomLineTag::Residence);
+    tag_test!(test_from_str_resi_lc, "resi", GedcomLineTag::Residence);
+    tag_test!(test_from_str_resn, "RESN", GedcomLineTag::Restriction);
+    tag_test!(test_from_str_resn_lc, "resn", GedcomLineTag::Restriction);
+    tag_test!(test_from_str_reti, "RETI", GedcomLineTag::Retirement);
+    tag_test!(test_from_str_reti_lc, "reti", GedcomLineTag::Retirement);
+    tag_test!(test_from_str_rfn, "RFN", GedcomLineTag::RecordFileNumber);
+    tag_test!(test_from_str_rfn_lc, "rfn", GedcomLineTag::RecordFileNumber);
+    tag_test!(test_from_str_rin, "RIN", GedcomLineTag::RecordIdNumber);
+    tag_test!(test_from_str_rin_lc, "rin", GedcomLineTag::RecordIdNumber);
+    tag_test!(test_from_str_role, "ROLE", GedcomLineTag::Role);
+    tag_test!(test_from_str_role_lc, "role", GedcomLineTag::Role);
+    tag_test!(test_from_str_romn, "ROMN", GedcomLineTag::Romanised);
+    tag_test!(test_from_str_romn_lc, "romn", GedcomLineTag::Romanised);
+    tag_test!(test_from_str_sex, "SEX", GedcomLineTag::Sex);
+    tag_test!(test_from_str_sex_lc, "sex", GedcomLineTag::Sex);
+    tag_test!(test_from_str_slgc, "SLGC", GedcomLineTag::SealingChild);
+    tag_test!(test_from_str_slgc_lc, "slgc", GedcomLineTag::SealingChild);
+    tag_test!(test_from_str_slgs, "SLGS", GedcomLineTag::SealingSpouse);
+    tag_test!(test_from_str_slgs_lc, "slgs", GedcomLineTag::SealingSpouse);
+    tag_test!(test_from_str_sour, "SOUR", GedcomLineTag::Source);
+    tag_test!(test_from_str_sour_lc, "sour", GedcomLineTag::Source);
+    tag_test!(test_from_str_spfx, "SPFX", GedcomLineTag::SurnamePrefix);
+    tag_test!(test_from_str_spfx_lc, "spfx", GedcomLineTag::SurnamePrefix);
+    tag_test!(
+        test_from_str_ssn,
+        "SSN",
+        GedcomLineTag::SocialSecurityNumber
+    );
+    tag_test!(
+        test_from_str_ssn_lc,
+        "ssn",
+        GedcomLineTag::SocialSecurityNumber
+    );
+    tag_test!(test_from_str_stae, "STAE", GedcomLineTag::State);
+    tag_test!(test_from_str_stae_lc, "stae", GedcomLineTag::State);
+    tag_test!(test_from_str_stat, "STAT", GedcomLineTag::Status);
+    tag_test!(test_from_str_stat_lc, "stat", GedcomLineTag::Status);
+    tag_test!(test_from_str_subm, "SUBM", GedcomLineTag::Submitter);
+    tag_test!(test_from_str_subm_lc, "subm", GedcomLineTag::Submitter);
+    tag_test!(test_from_str_subn, "SUBN", GedcomLineTag::Submission);
+    tag_test!(test_from_str_subn_lc, "subn", GedcomLineTag::Submission);
+    tag_test!(test_from_str_surn, "SURN", GedcomLineTag::Surname);
+    tag_test!(test_from_str_surn_lc, "surn", GedcomLineTag::Surname);
+    tag_test!(test_from_str_temp, "TEMP", GedcomLineTag::Temple);
+    tag_test!(test_from_str_temp_lc, "temp", GedcomLineTag::Temple);
+    tag_test!(test_from_str_text, "TEXT", GedcomLineTag::Text);
+    tag_test!(test_from_str_text_lc, "text", GedcomLineTag::Text);
+    tag_test!(test_from_str_time, "TIME", GedcomLineTag::Time);
+    tag_test!(test_from_str_time_lc, "time", GedcomLineTag::Time);
+    tag_test!(test_from_str_titl, "TITL", GedcomLineTag::Title);
+    tag_test!(test_from_str_titl_lc, "titl", GedcomLineTag::Title);
+    tag_test!(test_from_str_trlr, "TRLR", GedcomLineTag::Trailer);
+    tag_test!(test_from_str_trlr_lc, "trlr", GedcomLineTag::Trailer);
+    tag_test!(test_from_str_type, "TYPE", GedcomLineTag::Type);
+    tag_test!(test_from_str_type_lc, "type", GedcomLineTag::Type);
+    tag_test!(test_from_str_vers, "VERS", GedcomLineTag::Version);
+    tag_test!(test_from_str_vers_lc, "vers", GedcomLineTag::Version);
+    tag_test!(test_from_str_wife, "WIFE", GedcomLineTag::Wife);
+    tag_test!(test_from_str_wife_lc, "wife", GedcomLineTag::Wife);
+    tag_test!(test_from_str_will, "WILL", GedcomLineTag::Will);
+    tag_test!(test_from_str_will_lc, "will", GedcomLineTag::Will);
+    tag_test!(test_from_str_www, "WWW", GedcomLineTag::Web);
+    tag_test!(test_from_str_www_lc, "www", GedcomLineTag::Web);
 }
