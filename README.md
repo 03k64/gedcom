@@ -20,23 +20,22 @@ using it. To compile a development build of `gedcom` you can use the command
 run `cargo build --release`.
 
 You can then run the compiled binary in one of two ways, either way you need to
-provide two arguments using the `-i` and `-o` flags. The `-i` flag expects an
-argument consisting of the path to the GEDCOM input file. The `-o` flag expects
-an argument consisting of the path to write the JSON output file.
+provide an argument using the `-d` flag. The `-d` flag expects an argument
+consisting of the path to a directory containing GEDCOM input files. The `-d`
+flag also specifies the path to write the JSON output files which will be named
+identically to the corresponding input file but with a `.json` extension.
 
 ### Option 1
 
 You can run the binary using `cargo` in development mode using
-`cargo run -- -i <path/to/input.ged> -o <path/to/desired.json>` or in release
-mode using
-`cargo run --release -- -i <path/to/input.ged> -o <path/to/desired.json>`.
+`cargo run -- -d <path/to/gedcom/directory` or in release mode using
+`cargo run --release -- -d <path/to/gedcom/directory>`.
 
 ### Option 2
 
 You can run the development binary directly using
-`target/debug/gedcom -i <path/to/input.ged> -o <path/to/desired.json>` or the
-release binary directly using
-`target/release/gedcom -i <path/to/input.ged> -o <path/to/desired.json>`.
+`target/debug/gedcom -d <path/to/gedcom/directory>` or the release binary
+directly using `target/release/gedcom -d <path/to/gedcom/directory>`.
 
 For the purposes of benchmarking the release binary should be first compiled and
 then run using Option 2 above to avoid any overhead incurred by running through
@@ -65,7 +64,7 @@ acts as a test harness, but also produces output in the below format that
 allows regressions to be tracked between changes with a degree of statistical
 significance.
 
-### Example Output
+### Example Micro-Benchmark Output
 
 An initial benchmark run may produce output similar to the folllowing:
 
