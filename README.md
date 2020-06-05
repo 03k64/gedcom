@@ -157,20 +157,41 @@ section.
 ## Things to Improve
 
 The obvious thing to improve would be to round out test coverage, especially in
-the `models` module and its submodules. The current `Birth` type would ideally
-become a more generic `Fact` type. Given the scope of this challenge there did
-not seem to be any gain for making this change. It would be nice to round out
-the `relations` module against the existing relation API schema in order to test
-against larger GEDCOM files.
+the `models` module and its submodules. 
 
-Beyond this I would like to explore methods to introduce more concurrency, Rust
-provides excellent support for concurrency and the
+The current `Birth` type could probably become a more generic `Fact` type. 
+Alternatively, to minimise the number of `Option<T>` fields on any potential
+`Fact` type, a `Fact` enumeration could be created where a `Birth` variant 
+contains a `struct Birth {...}`, a `Death` variant contains a 
+`struct Death {...}` and so on. In general it would be nice to complete the
+types included to match the Relation API schema.
+
+Error handling has been included in the most minimal way possible, which is to
+say that most errors should result in _some_ kind of error message rather than
+silent failure. Regardless, most errors will cause a failure to occur and the
+application to terminate.
+
+Missing _required_ fields, most notably `date_created` on `Person` and `Family`
+types will not cause the application to exit. Instead as much of the GEDCOM as
+possible is converted and output. This behaviour may or may not be desirable in
+production, at the least a list of failures should be kept and output, this does
+not happen currently.
+
+Unicode support is currently limited. The application has been tested on Linux
+(Ubuntu 20.04) and Mac (macOS 10.15.4) successfully using the minimal test files
+included with the specification. Byte-order marks at the start of the file are
+ignored, if they appears elsewhere then behaviour is undefined. Other unicode
+characters, for example as part of a name, will likely cause parsing to fail, 
+this has not been tested.
+
+Beyond this I would like to investigate how to parallelise the application. Rust
+provides excellent support for concurrency, for example, the
 [rayon library](https://docs.rs/rayon/1.3.0/rayon/) provides very ergonomic
-iterator support. I did investigate adding a parallel iterator over the files in
-the directory, however this seemed to degrade performance when using smaller
-GEDCOM files. I suspect it may improve things if larger files were to be used.
-There are likely other places that could be converted to use parallel iterators
-also.
+parallel iterator support. I investigated using a parallel iterator over files
+in the target directory but to negative effect. I suspect this might be due to
+all test inputs being comparatively small and so the cost of parallelisation not
+being offset to a net performance gain. There are likely other places that could
+be converted to use parallel iterators also.
 
 ## General Rust Resources
 
