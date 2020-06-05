@@ -124,8 +124,8 @@ generated automatically by Criterion and can be view by going to
 `file:///</path/to/project/root>/target/criterion/report/index.html` in your
 browser of choice.
 
-The examples above were run on an Early 2015 Macbook Pro with an 2.9GHz Intel i5
-CPU, 8GB 1867MHz DDR3 RAM and macOS v10.15.4. Your results may vary dependent on
+The examples above were run on a desktop with a 3.4GHz AMD Ryzen 3 1200 CPU, 
+16GB 2400MHz DDR3 RAM and Ubuntu v20.04. Your results may vary dependent on
 machine specification.
 
 ## Project Structure
