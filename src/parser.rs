@@ -15,10 +15,20 @@ use self::terminator::parse_terminator;
 use self::util::five_tuple_to_gedcom_line;
 use self::xref_id::parse_optional_xref_id;
 use crate::models::gedcom::GedcomLine;
-use nom::{combinator::opt, multi::many1, sequence::tuple, IResult};
+use nom::{
+    character::complete::char,
+    combinator::opt,
+    multi::many1,
+    sequence::{preceded, tuple},
+    IResult,
+};
 
 pub fn parse_gedcom(input: &str) -> IResult<&str, Vec<GedcomLine>> {
-    many1(parse_gedcom_line)(input)
+    preceded(parse_optional_bom, many1(parse_gedcom_line))(input)
+}
+
+fn parse_optional_bom(input: &str) -> IResult<&str, Option<char>> {
+    opt(char('\u{feff}'))(input)
 }
 
 fn parse_gedcom_line(input: &str) -> IResult<&str, GedcomLine> {
